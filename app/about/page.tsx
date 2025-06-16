@@ -46,28 +46,28 @@ const values = [
 
 const team = [
   {
-    name: 'Alex Chen',
+    name: 'Arjun Patel',
     role: 'Founder & CEO',
     bio: 'Visionary leader with 8+ years in digital transformation',
     image: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop&crop=face',
     social: { linkedin: '#', twitter: '#' }
   },
   {
-    name: 'Sarah Martinez',
+    name: 'Ananya Sharma',
     role: 'Creative Director',
     bio: 'Award-winning designer specializing in brand identity',
     image: 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop&crop=face',
     social: { linkedin: '#', twitter: '#' }
   },
   {
-    name: 'David Kim',
+    name: 'Ravi Kumar',
     role: 'Lead Developer',
     bio: 'Full-stack expert passionate about performance optimization',
-    image: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop&crop=face',
+    image: 'https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop&crop=face',
     social: { linkedin: '#', twitter: '#' }
   },
   {
-    name: 'Emma Thompson',
+    name: 'Priya Singh',
     role: 'Video Production Lead',
     bio: 'Cinematic storyteller with expertise in motion graphics',
     image: 'https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop&crop=face',
