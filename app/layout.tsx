@@ -35,9 +35,12 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  // Read environment variable to control custom cursor
+  const isCursorEnabled = process.env.NEXT_PUBLIC_CUSTOM_CURSOR === 'true';
+
   return (
     <html lang="en">
-      <body className={`${inter.className} ${poppins.variable}`}>
+      <body className={`${inter.className} ${poppins.variable} ${isCursorEnabled ? 'custom-cursor-enabled' : ''}`}>
         <CustomCursor />
         <Navigation />
         <main>{children}</main>

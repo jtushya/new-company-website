@@ -8,6 +8,9 @@ export default function CustomCursor() {
   const [isHovering, setIsHovering] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
+  // Read environment variable to control cursor
+  const isCursorEnabled = process.env.NEXT_PUBLIC_CUSTOM_CURSOR === 'true';
+
   useEffect(() => {
     // Check if device is mobile
     const checkMobile = () => {
@@ -17,8 +20,8 @@ export default function CustomCursor() {
     checkMobile();
     window.addEventListener('resize', checkMobile);
 
-    // Only add mouse listeners on non-mobile devices
-    if (!isMobile) {
+    // Only add mouse listeners on non-mobile devices and if cursor enabled
+    if (!isMobile && isCursorEnabled) {
       const updateMousePosition = (e: MouseEvent) => {
         setMousePosition({ x: e.clientX, y: e.clientY });
       };
@@ -48,10 +51,10 @@ export default function CustomCursor() {
     return () => {
       window.removeEventListener('resize', checkMobile);
     };
-  }, [isMobile]);
+  }, [isMobile, isCursorEnabled]);
 
-  // Don't render cursor on mobile devices
-  if (isMobile) {
+  // Don't render cursor on mobile devices or if cursor disabled
+  if (isMobile || !isCursorEnabled) {
     return null;
   }
 

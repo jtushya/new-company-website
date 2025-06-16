@@ -76,14 +76,14 @@
   * {
     @apply border-border;
   }
-  body {
+  body.custom-cursor-enabled {
     @apply bg-background text-foreground;
     cursor: none;
   }
   
   /* Mobile cursor fix */
   @media (max-width: 768px) {
-    body {
+    body.custom-cursor-enabled {
       cursor: auto;
     }
   }
