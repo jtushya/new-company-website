@@ -4,7 +4,7 @@ date: "2024-12-05"
 author: "Emma Thompson"
 tags: ["JavaScript", "Performance", "Optimization", "Web Development"]
 excerpt: "Master advanced JavaScript performance optimization techniques that will make your applications lightning-fast and provide exceptional user experiences."
-image: "https://images.pexels.com/photos/1181298/pexels-photo-1181298.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop"
+image: "https://images.pexels.com/photos/270348/pexels-photo-270348.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop"
 ---
 
 # JavaScript Performance Optimization: Advanced Techniques for 2024

@@ -4,7 +4,7 @@ date: "2024-12-10"
 author: "David Kim"
 tags: ["Web Development", "Trends", "Technology", "Frontend"]
 excerpt: "Explore the cutting-edge trends that are revolutionizing web development in 2024, from AI integration to new frameworks and performance optimizations."
-image: "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop"
+image: "https://images.pexels.com/photos/11035380/pexels-photo-11035380.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop"
 featured: true
 ---
 
