@@ -4,6 +4,7 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   images: { unoptimized: true },
+  pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
   webpack: (config, { isServer }) => {
     // Fix fs module in browser environment
     if (!isServer) {
