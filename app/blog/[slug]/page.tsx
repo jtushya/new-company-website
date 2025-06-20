@@ -1,6 +1,5 @@
 import { notFound } from 'next/navigation';
-import { MDXRemote } from 'next-mdx-remote/rsc';
-import { getPostBySlug, getAllPostSlugs, markdownToHtml } from '@/lib/blog';
+import { getPostBySlug, getAllPostSlugs } from '@/lib/blog';
 import { MDXComponents } from '@/components/blog/MDXComponents';
 import BlogLayout from '@/components/blog/BlogLayout';
 import CustomLayout from '@/components/blog/CustomLayout';
@@ -14,7 +13,7 @@ interface BlogPostPageProps {
 
 // Generate static params for all blog posts
 export async function generateStaticParams() {
-  const slugs = getAllPostSlugs();
+  const slugs = await getAllPostSlugs();
   return slugs.map((slug) => ({
     slug,
   }));
@@ -22,7 +21,7 @@ export async function generateStaticParams() {
 
 // Generate metadata for SEO
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
-  const post = getPostBySlug(params.slug);
+  const post = await getPostBySlug(params.slug);
   
   if (!post) {
     return {
@@ -33,40 +32,24 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   return {
     title: post.metaTitle || post.title,
     description: post.metaDescription || post.excerpt,
-    openGraph: {
-      title: post.metaTitle || post.title,
-      description: post.metaDescription || post.excerpt,
-      type: 'article',
-      publishedTime: post.date,
-      authors: [post.author],
-      tags: post.tags,
-      images: post.image ? [post.image] : undefined,
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: post.metaTitle || post.title,
-      description: post.metaDescription || post.excerpt,
-      images: post.image ? [post.image] : undefined,
-    },
   };
 }
 
-export default function BlogPostPage({ params }: BlogPostPageProps) {
-  const post = getPostBySlug(params.slug);
+export default async function BlogPostPage({ params }: BlogPostPageProps) {
+  const post = await getPostBySlug(params.slug);
 
   if (!post) {
     notFound();
   }
 
-  // Choose layout based on post metadata
-  const LayoutComponent = post.layout === 'CustomLayout' ? CustomLayout : BlogLayout;
+  const Layout = post.layout === 'custom' ? CustomLayout : BlogLayout;
 
   return (
-    <LayoutComponent post={post}>
-      <MDXRemote 
-        source={post.content} 
-        components={MDXComponents}
+    <Layout post={post}>
+      <article 
+        className="prose prose-lg max-w-none"
+        dangerouslySetInnerHTML={{ __html: post.content }}
       />
-    </LayoutComponent>
+    </Layout>
   );
 }

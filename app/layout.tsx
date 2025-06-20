@@ -13,20 +13,27 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://planckk.com'),
   title: 'Planckk - Transform Your Digital Presence',
   description: 'Fast, professional, and high-quality web and media services. Get your website delivered in just 6 hours.',
   keywords: 'web development, digital transformation, social media management, SEO, video editing',
+  icons: {
+    icon: '/images/planckk-logo.png',
+    apple: '/images/planckk-logo.png',
+  },
   openGraph: {
     title: 'Planckk - Transform Your Digital Presence',
     description: 'Fast, professional, and high-quality web and media services. Get your website delivered in just 6 hours.',
     url: 'https://planckk.com',
     siteName: 'Planckk',
     type: 'website',
+    images: ['/images/planckk-logo.png'],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Planckk - Transform Your Digital Presence',
     description: 'Fast, professional, and high-quality web and media services. Get your website delivered in just 6 hours.',
+    images: ['/images/planckk-logo.png'],
   },
 };
 

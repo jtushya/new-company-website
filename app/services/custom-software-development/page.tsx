@@ -68,7 +68,7 @@ const processSteps = [
 const pricingPlans = [
   {
     name: 'MVP Development',
-    price: '$25,000',
+    price: '₹30,000',
     duration: 'one-time',
     features: [
       'Core functionality development',
@@ -81,7 +81,7 @@ const pricingPlans = [
   },
   {
     name: 'Full Application',
-    price: '$75,000',
+    price: '₹50,000',
     duration: 'one-time',
     features: [
       'Complete custom application',
@@ -96,7 +96,7 @@ const pricingPlans = [
   },
   {
     name: 'Enterprise Solution',
-    price: '$150,000',
+    price: '₹75,000',
     duration: 'one-time',
     features: [
       'Enterprise-scale application',
@@ -114,18 +114,18 @@ const pricingPlans = [
 
 const testimonials = [
   {
-    name: 'David Park',
-    role: 'CTO, FinTech Startup',
-    content: 'The custom trading platform they built handles millions of transactions daily. Exceptional quality and performance.',
+    name: 'Rahul Shah',
+    role: 'Founder, EduTech Startup',
+    content: 'They helped us build our MVP within budget. The team was responsive and delivered exactly what we needed to launch.',
     rating: 5,
-    avatar: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop&crop=face'
+    avatar: 'https://ui-avatars.com/api/?name=Rahul+Shah&background=random'
   },
   {
-    name: 'Jennifer Adams',
-    role: 'Operations Manager, Healthcare',
-    content: 'Our custom patient management system streamlined operations and improved patient care significantly.',
+    name: 'Priya Patel',
+    role: 'Small Business Owner',
+    content: 'Great experience working with them on our inventory management system. Very professional and understanding of our requirements.',
     rating: 5,
-    avatar: 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop&crop=face'
+    avatar: 'https://ui-avatars.com/api/?name=Priya+Patel&background=random'
   }
 ];
 

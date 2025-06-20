@@ -49,7 +49,7 @@ const team = [
     name: 'Arjun Patel',
     role: 'Founder & CEO',
     bio: 'Visionary leader with 8+ years in digital transformation',
-    image: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop&crop=face',
+    image: 'https://ik.imagekit.io/kztlve1l5/7902382c-6d4b-4110-995f-9d3cb20a21c6.png?updatedAt=1750076862560',
     social: { linkedin: '#', twitter: '#' }
   },
   {

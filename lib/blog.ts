@@ -1,9 +1,10 @@
-import fs from 'fs';
+import { readdir, readFile } from 'fs/promises';
 import path from 'path';
 import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
 import remarkGfm from 'remark-gfm';
+import { cache } from 'react';
 
 const postsDirectory = path.join(process.cwd(), 'content/blog');
 
@@ -39,100 +40,141 @@ export interface BlogMetadata {
 }
 
 // Get all blog post slugs
-export function getAllPostSlugs() {
+export async function getAllPostSlugs() {
   try {
-    const fileNames = fs.readdirSync(postsDirectory);
+    const fileNames = await readdir(postsDirectory);
     return fileNames
       .filter(name => name.endsWith('.md') || name.endsWith('.mdx'))
       .map(name => name.replace(/\.(md|mdx)$/, ''));
   } catch (error) {
+    console.error('Error reading blog posts:', error);
     return [];
   }
 }
 
-// Get all blog posts metadata
-export function getAllPosts(): BlogMetadata[] {
+// Get blog post metadata by slug
+export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
   try {
-    const slugs = getAllPostSlugs();
-    const posts = slugs
-      .map(slug => getPostBySlug(slug))
-      .filter(post => post !== null) as BlogPost[];
+    // Try .md extension first, then .mdx if .md doesn't exist
+    let fullPath = path.join(postsDirectory, `${slug}.md`);
+    let fileContent: string;
     
-    return posts
-      .sort((a, b) => (new Date(b.date).getTime() - new Date(a.date).getTime()))
-      .map(({ content, ...metadata }) => metadata);
-  } catch (error) {
-    return [];
-  }
-}
-
-// Get a single blog post by slug
-export function getPostBySlug(slug: string): BlogPost | null {
-  try {
-    const fullPath = path.join(postsDirectory, `${slug}.md`);
-    const mdxPath = path.join(postsDirectory, `${slug}.mdx`);
-    
-    let filePath = '';
-    if (fs.existsSync(fullPath)) {
-      filePath = fullPath;
-    } else if (fs.existsSync(mdxPath)) {
-      filePath = mdxPath;
-    } else {
-      return null;
+    try {
+      fileContent = await readFile(fullPath, 'utf8');
+    } catch (error) {
+      // If .md file doesn't exist, try .mdx
+      fullPath = path.join(postsDirectory, `${slug}.mdx`);
+      fileContent = await readFile(fullPath, 'utf8');
     }
-
-    const fileContents = fs.readFileSync(filePath, 'utf8');
-    const { data, content } = matter(fileContents);
-
-    // Calculate read time (average 200 words per minute)
-    const wordCount = content.split(/\s+/).length;
-    const readTime = Math.ceil(wordCount / 200);
+    
+    const { data, content } = matter(fileContent);
+    
+    const processedContent = await remark()
+      .use(html)
+      .use(remarkGfm)
+      .process(content);
+    const contentHtml = processedContent.toString();
 
     return {
       slug,
-      title: data.title || '',
-      date: data.date || '',
-      author: data.author || '',
+      content: contentHtml,
+      title: data.title,
+      date: data.date,
+      author: data.author,
       tags: data.tags || [],
       excerpt: data.excerpt || '',
-      content,
       layout: data.layout,
       metaTitle: data.metaTitle,
       metaDescription: data.metaDescription,
       image: data.image,
-      readTime,
+      readTime: data.readTime,
       featured: data.featured || false,
     };
   } catch (error) {
+    console.error(`Error reading blog post ${slug}:`, error);
     return null;
   }
 }
 
-// Get posts by tag
-export function getPostsByTag(tag: string): BlogMetadata[] {
-  const allPosts = getAllPosts();
-  return allPosts.filter(post => 
-    post.tags.some(postTag => postTag.toLowerCase() === tag.toLowerCase())
-  );
-}
+// Cache the getAllPosts function to avoid repeated file system reads
+export const getAllPosts = cache(async (): Promise<BlogMetadata[]> => {
+  try {
+    const slugs = await getAllPostSlugs();
+    const postsData = await Promise.all(
+      slugs.map(async (slug) => {
+        try {
+          // Try .md extension first
+          let fullPath = path.join(postsDirectory, `${slug}.md`);
+          let fileContent;
+          
+          try {
+            fileContent = await readFile(fullPath, 'utf8');
+          } catch (error) {
+            // If .md file doesn't exist, try .mdx
+            fullPath = path.join(postsDirectory, `${slug}.mdx`);
+            fileContent = await readFile(fullPath, 'utf8');
+          }
+          
+          const { data } = matter(fileContent);
+          
+          return {
+            slug,
+            title: data.title,
+            date: data.date,
+            author: data.author,
+            tags: data.tags || [],
+            excerpt: data.excerpt || '',
+            layout: data.layout,
+            metaTitle: data.metaTitle,
+            metaDescription: data.metaDescription,
+            image: data.image,
+            readTime: data.readTime,
+            featured: data.featured || false,
+          } as BlogMetadata;
+        } catch (error) {
+          console.error(`Error processing post ${slug}:`, error);
+          return null;
+        }
+      })
+    );
+    
+    // Filter out any null entries and sort posts by date
+    return postsData
+      .filter((post): post is BlogMetadata => post !== null)
+      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  } catch (error) {
+    console.error('Error getting all posts:', error);
+    return [];
+  }
+});
 
-// Get all unique tags
-export function getAllTags(): string[] {
-  const allPosts = getAllPosts();
-  const tags = new Set<string>();
-  
-  allPosts.forEach(post => {
-    post.tags.forEach(tag => tags.add(tag));
-  });
-  
-  return Array.from(tags).sort();
-}
+// Cache the getAllTags function
+export const getAllTags = cache(async (): Promise<string[]> => {
+  try {
+    const posts = await getAllPosts();
+    const tags = new Set<string>();
+    
+    posts.forEach(post => {
+      post.tags.forEach(tag => tags.add(tag));
+    });
+    
+    return Array.from(tags).sort();
+  } catch (error) {
+    console.error('Error getting tags:', error);
+    return [];
+  }
+});
 
 // Get featured posts
-export function getFeaturedPosts(): BlogMetadata[] {
-  const allPosts = getAllPosts();
-  return allPosts.filter(post => post.featured);
-}
+export const getFeaturedPosts = cache(async (): Promise<BlogMetadata[]> => {
+  try {
+    const posts = await getAllPosts();
+    return posts.filter(post => post.featured);
+  } catch (error) {
+    console.error('Error getting featured posts:', error);
+    return [];
+  }
+});
 
 // Convert markdown to HTML
 export async function markdownToHtml(markdown: string) {
@@ -144,21 +186,74 @@ export async function markdownToHtml(markdown: string) {
 }
 
 // Pagination helper
-export function getPaginatedPosts(page: number = 1, postsPerPage: number = 6) {
-  const allPosts = getAllPosts();
+export async function getPaginatedPosts(page: number = 1, postsPerPage: number = 6): Promise<{
+  posts: BlogMetadata[];
+  totalPages: number;
+  currentPage: number;
+}> {
+  const allPosts = await getAllPosts();
   const totalPosts = allPosts.length;
   const totalPages = Math.ceil(totalPosts / postsPerPage);
-  const startIndex = (page - 1) * postsPerPage;
+  const currentPage = Math.max(1, Math.min(page, totalPages));
+  
+  const startIndex = (currentPage - 1) * postsPerPage;
   const endIndex = startIndex + postsPerPage;
+  const posts = allPosts.slice(startIndex, endIndex);
   
   return {
-    posts: allPosts.slice(startIndex, endIndex),
-    pagination: {
-      currentPage: page,
-      totalPages,
-      totalPosts,
-      hasNextPage: page < totalPages,
-      hasPrevPage: page > 1,
-    }
+    posts,
+    totalPages,
+    currentPage
   };
+}
+
+// Search posts
+export async function searchPosts(query: string): Promise<BlogMetadata[]> {
+  const allPosts = await getAllPosts();
+  const searchTerms = query.toLowerCase().split(' ').filter(Boolean);
+  
+  return allPosts.filter(post => {
+    const searchableText = [
+      post.title,
+      post.excerpt,
+      post.author,
+      ...post.tags
+    ].join(' ').toLowerCase();
+    
+    return searchTerms.every(term => searchableText.includes(term));
+  });
+}
+
+// Filter posts by multiple tags
+export async function filterPostsByTags(tags: string[]): Promise<BlogMetadata[]> {
+  if (!tags.length) {
+    return getAllPosts();
+  }
+  
+  const allPosts = await getAllPosts();
+  return allPosts.filter(post =>
+    tags.every(tag =>
+      post.tags.some(postTag => postTag.toLowerCase() === tag.toLowerCase())
+    )
+  );
+}
+
+// Get related posts
+export async function getRelatedPosts(slug: string, limit: number = 3): Promise<BlogMetadata[]> {
+  const allPosts = await getAllPosts();
+  const currentPost = allPosts.find(post => post.slug === slug);
+  
+  if (!currentPost) {
+    return [];
+  }
+  
+  return allPosts
+    .filter(post => post.slug !== slug) // Exclude current post
+    .map(post => ({
+      post,
+      score: post.tags.filter(tag => currentPost.tags.includes(tag)).length
+    } as { post: BlogMetadata; score: number }))
+    .sort((a, b) => b.score - a.score)
+    .map(({ post }) => post)
+    .slice(0, limit);
 }

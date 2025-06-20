@@ -19,70 +19,110 @@ const categories = ['All', 'Websites', 'Mobile Apps', 'Video Editing', 'Digital 
 const projects = [
   {
     id: 1,
-    title: 'TechStart Landing Page',
+    title: 'EA Global',
     category: 'Websites',
-    description: 'Modern SaaS landing page with conversion optimization',
-    image: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
-    tags: ['React', 'Next.js', 'Tailwind'],
-    deliveryTime: '4 hours',
-    client: 'TechStart Inc.',
-    results: '+150% conversion rate'
+    description: 'A complete website for EA Global with modern design and user experience.',
+    image: '/images/portfolio/img1.png',
+    tags: ['User-Friendly Interface', 'Mobile Responsive', 'Fast Loading'],
+    deliveryTime: '24 hours',
+    client: 'EA Global',
+    link: 'englisharenaglobal.com'
   },
   {
     id: 2,
-    title: 'FitLife Mobile App',
-    category: 'Mobile Apps',
-    description: 'Fitness tracking app with social features',
-    image: 'https://images.pexels.com/photos/4164418/pexels-photo-4164418.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
-    tags: ['React Native', 'Firebase', 'UI/UX'],
-    deliveryTime: '2 weeks',
-    client: 'FitLife Studios',
-    results: '50K+ downloads'
+    title: 'EduPowr Counselling',
+    category: 'Websites',
+    description: 'A comprehensive counselling website for EduPowr with booking system.',
+    image: '/images/portfolio/img2.png',
+    tags: ['Online Booking', 'Secure Payments', 'Student Dashboard'],
+    deliveryTime: '18 hours',
+    client: 'EduPowr Counselling',
+    link: 'counselling.englisharenaglobal.com'
   },
   {
     id: 3,
-    title: 'Brand Launch Campaign',
-    category: 'Video Editing',
-    description: 'Product launch video with motion graphics',
-    image: 'https://images.pexels.com/photos/3945313/pexels-photo-3945313.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
-    tags: ['After Effects', 'Premiere Pro', 'Motion Graphics'],
-    deliveryTime: '3 days',
-    client: 'Luxe Cosmetics',
-    results: '2M+ views'
+    title: 'LED Lighting Company',
+    category: 'Websites',
+    description: 'A professional website showcasing LED lighting products and services.',
+    image: '/images/portfolio/img5.png',
+    tags: ['Product Catalog', 'Custom Quote Builder', 'Energy Savings Calculator'],
+    deliveryTime: '12 hours',
+    client: 'LED Lighting Company'
   },
   {
     id: 4,
-    title: 'E-commerce Platform',
+    title: 'Mental Health Chat Bot',
     category: 'Websites',
-    description: 'Full-featured online store with payment integration',
-    image: 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
-    tags: ['Shopify', 'Custom Theme', 'Payment Gateway'],
-    deliveryTime: '6 hours',
-    client: 'Fashion Forward',
-    results: '+200% sales'
+    description: 'An AI-powered chat bot for emotional well-being and mental health support.',
+    image: '/images/portfolio/mental-homepage.png',
+    tags: ['24/7 Support', 'Private Conversations', 'Crisis Resources'],
+    deliveryTime: '24 hours',
+    client: 'Healthcare Industry',
+    link: 'mental-welness.vercel.app'
   },
   {
     id: 5,
-    title: 'Social Media Campaign',
-    category: 'Digital Marketing',
-    description: 'Multi-platform campaign for restaurant chain',
-    image: 'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
-    tags: ['Instagram', 'Facebook', 'TikTok'],
-    deliveryTime: '1 week',
-    client: 'Bistro Delights',
-    results: '+300% engagement'
+    title: 'POSH Compliance Website',
+    category: 'Websites',
+    description: 'Professional website for POSH compliance services and resources.',
+    image: '/images/portfolio/posh-compliance.png',
+    tags: ['Training Portal', 'Case Management', 'Policy Guidelines'],
+    deliveryTime: '10 hours',
+    client: 'Secura Compliances',
+    link: 'secura-website.vercel.app'
   },
-  {
-    id: 6,
-    title: 'Corporate Rebrand',
-    category: 'Branding',
-    description: 'Complete visual identity redesign',
-    image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
-    tags: ['Logo Design', 'Brand Guidelines', 'Collateral'],
-    deliveryTime: '5 days',
-    client: 'InnovateCorp',
-    results: '+85% brand recognition'
-  },
+  // {
+  //   id: 6,
+  //   title: 'Fashion Boutique Mobile App',
+  //   category: 'Mobile Apps',
+  //   description: 'A sleek mobile app for a fashion boutique with AR try-on features.',
+  //   image: '/images/portfolio/fashion-app.jpg',
+  //   tags: ['Virtual Try-On', 'Size Recommender', 'Wishlist & Favorites'],
+  //   deliveryTime: '24 hours',
+  //   client: 'Style Hub',
+  //   link: 'stylehub.app'
+  // },
+  // {
+  //   id: 7,
+  //   title: 'Corporate Brand Video',
+  //   category: 'Video Editing',
+  //   description: 'High-impact corporate video showcasing company culture and values.',
+  //   image: '/images/portfolio/corporate-video.jpg',
+  //   tags: ['Brand Storytelling', 'Employee Testimonials', 'Visual Effects'],
+  //   deliveryTime: '18 hours',
+  //   client: 'TechCorp Inc.'
+  // },
+  // {
+  //   id: 8,
+  //   title: 'Social Media Campaign',
+  //   category: 'Digital Marketing',
+  //   description: 'Comprehensive social media campaign for product launch.',
+  //   image: '/images/portfolio/social-campaign.jpg',
+  //   tags: ['Brand Awareness', 'Lead Generation', 'Engagement Strategy'],
+  //   deliveryTime: '12 hours',
+  //   client: 'Eco Products'
+  // },
+  // {
+  //   id: 9,
+  //   title: 'Restaurant Ordering App',
+  //   category: 'Mobile Apps',
+  //   description: 'Mobile app for seamless restaurant ordering and table reservations.',
+  //   image: '/images/portfolio/restaurant-app.jpg',
+  //   tags: ['Table Booking', 'Real-time Order Tracking', 'Digital Menu'],
+  //   deliveryTime: '24 hours',
+  //   client: 'Gourmet Dining',
+  //   link: 'gourmetapp.com'
+  // },
+  // {
+  //   id: 10,
+  //   title: 'Brand Identity Design',
+  //   category: 'Branding',
+  //   description: 'Complete brand identity redesign including logo and brand guidelines.',
+  //   image: '/images/portfolio/brand-identity.jpg',
+  //   tags: ['Brand Strategy', 'Visual Identity', 'Brand Guidelines'],
+  //   deliveryTime: '18 hours',
+  //   client: 'Green Energy Co.'
+  // }
 ];
 
 export default function Portfolio() {
@@ -187,11 +227,20 @@ export default function Portfolio() {
                       className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <Button size="sm" className="bg-white/20 backdrop-blur-sm text-white border-white/30">
-                        <ExternalLink className="w-4 h-4" />
-                      </Button>
-                    </div>
+                    {project.link && (
+                      <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <a
+                          href={`https://${project.link}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-block"
+                        >
+                          <Button size="sm" className="bg-white/20 backdrop-blur-sm text-white border-white/30 hover:bg-white/30">
+                            <ExternalLink className="w-4 h-4" />
+                          </Button>
+                        </a>
+                      </div>
+                    )}
                     <div className="absolute top-4 left-4">
                       <span className="bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-medium">
                         {project.category}
@@ -213,20 +262,39 @@ export default function Portfolio() {
                         </span>
                       ))}
                     </div>
-                    
-                    <div className="space-y-2 text-sm text-gray-500">
-                      <div className="flex justify-between">
-                        <span>Client:</span>
-                        <span className="font-medium">{project.client}</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span>Delivery:</span>
-                        <span className="font-medium text-green-600">{project.deliveryTime}</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span>Results:</span>
-                        <span className="font-medium text-purple-600">{project.results}</span>
-                      </div>
+                     <div className="space-y-2 text-sm text-gray-500">
+                      {Object.entries(project).map(([key, value]) => {
+                        // Skip standard fields that we don't want to display
+                        const skipFields = ['id', 'title', 'category', 'description', 'image', 'tags'];
+                        if (skipFields.includes(key)) return null;
+                        
+                        // Format the key for display (capitalize first letter, add spaces before caps)
+                        const displayKey = key
+                          .replace(/([A-Z])/g, ' $1')
+                          .replace(/^./, str => str.toUpperCase());
+
+                        // Skip if value is undefined or null
+                        if (value === undefined || value === null) return null;
+
+                        // Handle different types of values
+                        const displayValue = 
+                          key === 'deliveryTime' ? (
+                            <span className="font-medium text-green-600">{value}</span>
+                          ) : key === 'link' ? (
+                            <a href={`https://${value}`} target="_blank" rel="noopener noreferrer" className="font-medium text-purple-600 hover:text-purple-800">
+                              {value}
+                            </a>
+                          ) : (
+                            <span className="font-medium">{value}</span>
+                          );
+
+                        return (
+                          <div key={key} className="flex justify-between">
+                            <span>{displayKey}:</span>
+                            {displayValue}
+                          </div>
+                        );
+                      })}
                     </div>
                   </CardContent>
                 </Card>

@@ -74,8 +74,8 @@ const process = [
 const pricingPlans = [
   {
     name: 'Basic Edit',
-    price: '$99',
-    duration: '2-3 hours',
+    price: '₹5000',
+    duration: '30 minutes',
     features: [
       'Basic cuts and transitions',
       'Color correction',
@@ -87,8 +87,8 @@ const pricingPlans = [
   },
   {
     name: 'Professional',
-    price: '$299',
-    duration: '4-6 hours',
+    price: '₹7,500',
+    duration: '1-2 hours',
     features: [
       'Advanced editing techniques',
       'Color grading',
@@ -101,7 +101,7 @@ const pricingPlans = [
   },
   {
     name: 'Cinematic',
-    price: '$599',
+    price: '₹10,000',
     duration: '6-8 hours',
     features: [
       'Cinematic editing style',
@@ -117,18 +117,25 @@ const pricingPlans = [
 
 const testimonials = [
   {
-    name: 'Sarah Johnson',
-    role: 'Content Creator',
-    content: 'The video editing quality exceeded my expectations. My YouTube channel growth increased by 300% after using their services.',
+    name: "Amit Deshmukh",
+    role: "Content Creator",
+    content: "Since partnering with Planckk, my channel's engagement has grown 200%. Their editing style perfectly matches what my audience loves.",
     rating: 5,
-    avatar: 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop&crop=face'
+    avatar: "https://ui-avatars.com/api/?name=Amit+Deshmukh&background=random&size=150"
   },
   {
-    name: 'Mike Chen',
-    role: 'Marketing Director',
-    content: 'Professional, fast, and creative. They transformed our raw footage into compelling marketing videos.',
+    name: "Kavita Krishnan",
+    role: "Digital Marketing Head",
+    content: "They turned our product showcases into engaging stories. Our video ads now have 3x better conversion rates.",
     rating: 5,
-    avatar: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop&crop=face'
+    avatar: "https://ui-avatars.com/api/?name=Kavita+Krishnan&background=random&size=150"
+  },
+  {
+    name: "Sanjay Mehra",
+    role: "Events Professional",
+    content: "Their wedding highlight videos are exceptional. Every client has been impressed with the emotional storytelling.",
+    rating: 5,
+    avatar: "https://ui-avatars.com/api/?name=Sanjay+Mehra&background=random&size=150"
   }
 ];
 

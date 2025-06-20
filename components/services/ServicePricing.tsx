@@ -83,6 +83,17 @@ export default function ServicePricing({ title, subtitle, plans }: ServicePricin
             </motion.div>
           ))}
         </div>
+        <motion.div
+          className="text-center mt-8"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <p className="text-gray-500 text-sm max-w-3xl mx-auto italic">
+            * These prices are indicative and may vary based on your specific business requirements, project complexity, and customization needs. Our team will provide a detailed quote after thoroughly understanding your project scope during the consultation.
+          </p>
+        </motion.div>
       </div>
     </section>
   );

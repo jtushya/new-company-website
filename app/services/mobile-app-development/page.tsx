@@ -68,42 +68,45 @@ const process = [
 const pricingPlans = [
   {
     name: 'MVP App',
-    price: '$4,999',
-    duration: '4-6 weeks',
+    price: '₹10,000',
+    duration: '/project',
+    description: 'Perfect for MVPs and simple applications',
     features: [
-      'Single platform (iOS or Android)',
-      'Core functionality',
-      'Basic UI/UX design',
-      'App store submission',
-      '30 days support'
+      'Native iOS or Android App',
+      'Basic User Authentication',
+      'Up to 5 Core Features',
+      '3 months Support',
+      'App Store Submission'
     ],
     popular: false
   },
   {
-    name: 'Business App',
-    price: '$12,999',
-    duration: '8-12 weeks',
+    name: 'Professional',
+    price: '₹20,000',
+    duration: '/project',
+    description: 'Ideal for businesses needing a robust mobile presence',
     features: [
-      'Cross-platform development',
-      'Advanced features',
-      'Custom UI/UX design',
-      'Backend integration',
-      'Analytics integration',
-      '90 days support'
+      'Native iOS and Android Apps',
+      'Advanced Authentication',
+      'Up to 10 Core Features',
+      'Payment Integration',
+      '6 months Support',
+      'Analytics Integration'
     ],
     popular: true
   },
   {
-    name: 'Enterprise App',
-    price: '$24,999',
-    duration: '12-16 weeks',
+    name: 'Enterprise',
+    price: '₹50,000',
+    duration: '/project',
+    description: 'Comprehensive solution for complex applications',
     features: [
-      'Full-featured application',
-      'Custom backend development',
-      'Advanced security',
-      'Third-party integrations',
-      'Admin dashboard',
-      '6 months support'
+      'Full Custom Development',
+      'Advanced Security Features',
+      'Unlimited Features',
+      'API Development',
+      '1 Year Support',
+      'Custom Admin Dashboard'
     ],
     popular: false
   }
@@ -111,18 +114,25 @@ const pricingPlans = [
 
 const testimonials = [
   {
-    name: 'Alex Morgan',
-    role: 'Startup Founder',
-    content: 'They built our fitness app in 6 weeks. We now have 50K+ downloads and growing fast!',
+    name: "Deepak Kumar",
+    role: "Fitness App Founder",
+    content: "Our fitness app was ready in just 2 weeks! The user experience is amazing and we're seeing great download numbers.",
     rating: 5,
-    avatar: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop&crop=face'
+    avatar: "https://ui-avatars.com/api/?name=Deepak+Kumar&background=random&size=150"
   },
   {
-    name: 'Maria Santos',
-    role: 'Restaurant Chain Owner',
-    content: 'Our ordering app increased sales by 200%. The user experience is fantastic.',
+    name: "Shalini Desai",
+    role: "Restaurant Chain CEO",
+    content: "The food delivery app they built has streamlined our operations completely. Order accuracy has improved by 90%.",
     rating: 5,
-    avatar: 'https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop&crop=face'
+    avatar: "https://ui-avatars.com/api/?name=Shalini+Desai&background=random&size=150"
+  },
+  {
+    name: "Arjun Nair",
+    role: "Fintech Director",
+    content: "Their expertise in fintech apps is outstanding. Our payment app got featured on the Play Store for its security features.",
+    rating: 5,
+    avatar: "https://ui-avatars.com/api/?name=Arjun+Nair&background=random&size=150"
   }
 ];
 

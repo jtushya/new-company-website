@@ -41,7 +41,7 @@ const benefits = [
   {
     icon: Coffee,
     title: 'Learning Budget',
-    description: '$2000 annual budget for courses, conferences, and skill development',
+    description: '₹25,000 annual budget for courses, conferences, and skill development',
     color: 'from-purple-500 to-indigo-500'
   },
   {
@@ -61,18 +61,18 @@ const benefits = [
 const jobOpenings = [
   {
     id: 1,
-    title: 'Senior Frontend Developer',
+    title: 'Frontend Developer',
     department: 'Engineering',
     type: 'Full-time',
     location: 'Remote',
-    salary: '$80,000 - $120,000',
-    deadline: '2024-02-15',
+    salary: '₹10,000 - ₹15,000 per month',
+    deadline: '2025-07-15',
     description: 'Join our frontend team to build lightning-fast, beautiful web experiences using React, Next.js, and modern CSS frameworks.',
     requirements: [
-      '5+ years of React/Next.js experience',
-      'Expert in TypeScript and modern CSS',
-      'Experience with performance optimization',
-      'Strong design sensibility'
+      '0-2 years of React/Next.js experience',
+      'Familiarity with TypeScript and modern CSS',
+      'Basic understanding of performance optimization',
+      'Good design sensibility'
     ]
   },
   {
@@ -81,13 +81,13 @@ const jobOpenings = [
     department: 'Creative',
     type: 'Full-time',
     location: 'Remote',
-    salary: '$60,000 - $90,000',
-    deadline: '2024-02-20',
+    salary: '₹5,000 - ₹10,000  per month',
+    deadline: '2025-07-15',
     description: 'Create stunning video content and motion graphics for our clients across various industries and platforms.',
     requirements: [
       'Proficiency in After Effects and Premiere Pro',
-      'Strong portfolio of motion graphics work',
-      '3+ years of professional video editing experience',
+      'Portfolio of motion graphics work',
+      '0-2 years of professional video editing experience',
       'Understanding of social media video formats'
     ]
   },
@@ -97,14 +97,14 @@ const jobOpenings = [
     department: 'Marketing',
     type: 'Full-time',
     location: 'Remote',
-    salary: '$55,000 - $75,000',
-    deadline: '2024-02-25',
+    salary: '₹10,000 - ₹15,000 per month',
+    deadline: '2025-07-15',
     description: 'Drive growth through data-driven marketing campaigns across multiple channels and help our clients achieve their digital goals.',
     requirements: [
       'Experience with Google Ads and Facebook Ads',
-      'Strong analytical skills and data interpretation',
+      'Basic analytical skills and data interpretation',
       'Knowledge of SEO and content marketing',
-      'Excellent communication skills'
+      'Good communication skills'
     ]
   },
   {
@@ -113,12 +113,12 @@ const jobOpenings = [
     department: 'Design',
     type: 'Full-time',
     location: 'Remote',
-    salary: '$65,000 - $95,000',
-    deadline: '2024-03-01',
+    salary: '₹10,000 - ₹15,000 per month',
+    deadline: '2025-07-15',
     description: 'Design beautiful, intuitive user experiences that delight our clients and their customers.',
     requirements: [
       'Proficiency in Figma and design systems',
-      'Strong portfolio of web and mobile designs',
+      'Portfolio of web and mobile designs',
       'Understanding of user research and testing',
       'Experience with prototyping tools'
     ]
@@ -129,13 +129,13 @@ const jobOpenings = [
     department: 'Operations',
     type: 'Full-time',
     location: 'Remote',
-    salary: '$70,000 - $90,000',
-    deadline: '2024-03-05',
+    salary: '₹10,000 - ₹15,000 per month',
+    deadline: '2025-07-15',
     description: 'Coordinate our fast-paced projects and ensure we deliver exceptional results on time, every time.',
     requirements: [
-      'PMP or similar project management certification',
+      'Basic project management certification or training',
       'Experience in digital agency environment',
-      'Excellent organizational and communication skills',
+      'Good organizational and communication skills',
       'Familiarity with agile methodologies'
     ]
   },
@@ -143,6 +143,7 @@ const jobOpenings = [
 
 export default function Careers() {
   const [selectedJob, setSelectedJob] = useState<number | null>(null);
+  const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -151,6 +152,18 @@ export default function Careers() {
     coverLetter: '',
     resume: null as File | null
   });
+
+  const resetForm = () => {
+    setFormData({
+      name: '',
+      email: '',
+      phone: '',
+      position: '',
+      coverLetter: '',
+      resume: null
+    });
+    setFormStatus('idle');
+  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
@@ -168,11 +181,34 @@ export default function Careers() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically send the form data to Google Forms or your backend
-    console.log('Form submitted:', formData);
-    alert('Application submitted successfully!');
+    setFormStatus('submitting');
+
+    try {
+      // Here you would typically send the form data to your backend
+      const response = await fetch('/api/careers', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Form submission failed');
+      }
+
+      setFormStatus('success');
+      setTimeout(() => {
+        setSelectedJob(null);
+        resetForm();
+      }, 2000);
+
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setFormStatus('error');
+    }
   };
 
   return (
@@ -356,7 +392,10 @@ export default function Careers() {
               <div className="flex justify-between items-center mb-6">
                 <h3 className="text-2xl font-bold text-gray-900">Apply for Position</h3>
                 <button
-                  onClick={() => setSelectedJob(null)}
+                  onClick={() => {
+                    setSelectedJob(null);
+                    resetForm();
+                  }}
                   className="text-gray-400 hover:text-gray-600 text-2xl"
                 >
                   ×
@@ -471,15 +510,44 @@ export default function Careers() {
                   <Button
                     type="button"
                     variant="outline"
-                    onClick={() => setSelectedJob(null)}
+                    onClick={() => {
+                      setSelectedJob(null);
+                      resetForm();
+                    }}
                     className="flex-1"
+                    disabled={formStatus === 'submitting'}
                   >
                     Cancel
                   </Button>
-                  <Button type="submit" className="flex-1">
-                    Submit Application
+                  <Button 
+                    type="submit" 
+                    className="flex-1"
+                    disabled={formStatus === 'submitting'}
+                  >
+                    {formStatus === 'submitting' ? 'Submitting...' : 'Submit Application'}
                   </Button>
                 </div>
+
+                {formStatus === 'success' && (
+                  <div className="p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 text-center">
+                    Application submitted successfully! We'll be in touch soon.
+                  </div>
+                )}
+
+                {formStatus === 'error' && (
+                  <div className="p-4 bg-red-50 border border-red-200 rounded-lg text-red-700">
+                    <p className="text-center mb-2">Sorry, we couldn't submit your application at this time.</p>
+                    <p className="text-center">Please contact us directly at:</p>
+                    <div className="flex flex-col items-center mt-2 space-y-1">
+                      <a href="tel:+919384107679" className="text-red-700 hover:text-red-800 font-medium">
+                        +91 93841 07679
+                      </a>
+                      <a href="mailto:info@planckk.com" className="text-red-700 hover:text-red-800 font-medium">
+                        info@planckk.com
+                      </a>
+                    </div>
+                  </div>
+                )}
               </form>
             </div>
           </motion.div>

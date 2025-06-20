@@ -65,45 +65,48 @@ const process = [
   }
 ];
 
-const pricingPlans = [
+const plans = [
   {
     name: 'Starter',
-    price: '$999',
-    duration: 'per month',
+    price: '₹9,999',
+    duration: '/month',
+    description: 'Perfect for small businesses just starting with digital marketing',
     features: [
-      'Social media management',
-      'Basic SEO optimization',
-      'Google Ads setup',
-      'Monthly reporting',
-      'Email support'
+      'Social Media Management (2 platforms)',
+      'Basic SEO Setup',
+      'Monthly Performance Reports',
+      'Email Marketing Setup',
+      'Basic Content Strategy'
     ],
     popular: false
   },
   {
-    name: 'Growth',
-    price: '$2,499',
-    duration: 'per month',
+    name: 'Professional',
+    price: '₹14,999',
+    duration: '/month',
+    description: 'Ideal for growing businesses looking to scale their online presence',
     features: [
-      'Multi-platform campaigns',
-      'Advanced SEO strategy',
-      'PPC management',
-      'Content creation',
-      'Weekly reporting',
-      'Phone support'
+      'Social Media Management (4 platforms)',
+      'Advanced SEO & Content Strategy',
+      'PPC Campaign Management',
+      'Weekly Performance Reports',
+      'Email Marketing Automation',
+      'Lead Generation Setup'
     ],
     popular: true
   },
   {
     name: 'Enterprise',
-    price: '$4,999',
-    duration: 'per month',
+    price: '₹18,999',
+    duration: '/month',
+    description: 'Comprehensive solution for established businesses',
     features: [
-      'Full-service marketing',
-      'Custom strategy',
-      'Dedicated account manager',
-      'Advanced analytics',
-      'Daily monitoring',
-      '24/7 support'
+      'Full-Service Digital Marketing',
+      'Custom Strategy Development',
+      'All Social Media Platforms',
+      'Advanced Analytics & Reporting',
+      'Marketing Automation',
+      'Dedicated Account Manager'
     ],
     popular: false
   }
@@ -111,18 +114,25 @@ const pricingPlans = [
 
 const testimonials = [
   {
-    name: 'Jennifer Walsh',
-    role: 'E-commerce CEO',
-    content: 'Our online sales increased by 400% in just 3 months. Their digital marketing strategy is incredible.',
+    name: "Vikram Singh",
+    role: "E-commerce CEO",
+    content: "Our online sales grew by 300% in just 3 months. Their digital marketing strategy helped us reach the right audience effectively.",
     rating: 5,
-    avatar: 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop&crop=face'
+    avatar: "https://ui-avatars.com/api/?name=Vikram+Singh&background=random&size=150"
   },
   {
-    name: 'Robert Kim',
-    role: 'SaaS Founder',
-    content: 'They helped us scale from 100 to 10,000 users. ROI was 300% in the first quarter.',
+    name: "Meera Kapoor",
+    role: "Marketing Director",
+    content: "Fantastic ROI on our digital campaigns. We saw a 200% increase in qualified leads within the first quarter.",
     rating: 5,
-    avatar: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop&crop=face'
+    avatar: "https://ui-avatars.com/api/?name=Meera+Kapoor&background=random&size=150"
+  },
+  {
+    name: "Arun Verma",
+    role: "Food Industry Entrepreneur",
+    content: "Their social media management and PPC campaigns helped us become a trusted name in our niche. Our customer base has doubled!",
+    rating: 5,
+    avatar: "https://ui-avatars.com/api/?name=Arun+Verma&background=random&size=150"
   }
 ];
 
@@ -156,7 +166,7 @@ export default function DigitalMarketingPage() {
       <ServicePricing
         title="Marketing Packages"
         subtitle="Scalable solutions for businesses of all sizes"
-        plans={pricingPlans}
+        plans={plans}
       />
 
       <ServiceTestimonials

@@ -6,25 +6,25 @@ import { Card, CardContent } from '@/components/ui/card';
 
 const testimonials = [
   {
-    name: 'Sarah Chen',
+    name: 'Akash Verma',
     role: 'Startup Founder',
-    content: 'Planckk delivered our website in just 4 hours! The quality exceeded our expectations and the design is absolutely stunning.',
+    content: 'Planckk delivered our website in just 5 hours! The quality exceeded our expectations and the design is absolutely stunning.',
     rating: 5,
-    avatar: 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop&crop=face'
+    avatar: ''
   },
   {
-    name: 'Marcus Johnson',
+    name: 'Anjali Sharma',
     role: 'E-commerce Owner',
     content: 'Their video editing transformed our product demos. Sales increased by 40% within the first month!',
     rating: 5,
-    avatar: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop&crop=face'
+    avatar: ''
   },
   {
-    name: 'Emma Rodriguez',
-    role: 'Influencer',
-    content: 'The social media management service helped me grow from 10K to 100K followers. Incredible results!',
+    name: 'Ashish Kumar',
+    role: 'Business Owner',
+    content: 'The social media management service helped me grow from 450 to 8K followers. Incredible results!',
     rating: 5,
-    avatar: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop&crop=face'
+    avatar: ''
   },
 ];
 
@@ -77,7 +77,7 @@ export default function TestimonialsSection() {
                   <p className="text-gray-100 mb-6 italic leading-relaxed">"{testimonial.content}"</p>
                   <div className="flex items-center">
                     <img
-                      src={testimonial.avatar}
+                      src={`https://ui-avatars.com/api/?name=${encodeURIComponent(testimonial.name)}&background=4caf50&color=fff&rounded=true&size=48`}
                       alt={testimonial.name}
                       className="w-12 h-12 rounded-full mr-4 border-2 border-white/20"
                     />

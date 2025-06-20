@@ -78,12 +78,12 @@ const process = [
 const plans = [
   {
     name: 'Starter',
-    price: '$499',
+    price: '₹6500',
     duration: 'One-time payment',
     features: [
-      'Up to 5 pages',
+      '5 pages',
       'Mobile responsive design',
-      'Basic SEO optimization',
+      'SEO optimization',
       'Contact form integration',
       '30 days support',
       'SSL certificate included'
@@ -92,15 +92,15 @@ const plans = [
   },
   {
     name: 'Professional',
-    price: '$999',
+    price: '₹9000',
     duration: 'One-time payment',
     features: [
-      'Up to 15 pages',
+      '10 pages',
       'Custom design & animations',
-      'Advanced SEO optimization',
-      'CMS integration',
-      'E-commerce functionality',
-      '90 days support',
+      'Enhanced SEO optimization',
+      'Blog integration',
+      // 'E-commerce functionality',
+      '60 days support',
       'Performance optimization',
       'Analytics setup'
     ],
@@ -108,16 +108,20 @@ const plans = [
   },
   {
     name: 'Enterprise',
-    price: '$1,999',
+    price: '₹12,000',
     duration: 'One-time payment',
     features: [
       'Unlimited pages',
-      'Custom functionality',
-      'Advanced integrations',
+      'Custom design & animations',
+      'Enhanced SEO optimization',
+      'E-commerce functionality',
+      'Analytics setup',
+      'Custom integrations',
+      'AI powered features',
+      'AI chatbot integration',
       'Multi-language support',
-      'Custom admin panel',
-      '6 months support',
-      'Priority support',
+      // 'admin panel',
+      '6 months priority support',
       'Training included'
     ],
     popular: false
@@ -126,18 +130,25 @@ const plans = [
 
 const testimonials = [
   {
-    name: 'Sarah Johnson',
-    role: 'Startup Founder',
-    content: 'Planckk delivered our website in just 4 hours! The design exceeded our expectations and perfectly captured our brand identity.',
+    name: "Priya Sharma",
+    role: "Boutique Owner",
+    content: "Planckk transformed our boutique website in just 6 hours. Our customers love the new mobile shopping experience!",
     rating: 5,
-    avatar: 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop&crop=face'
+    avatar: "https://ui-avatars.com/api/?name=Priya+Sharma&background=random&size=150"
   },
   {
-    name: 'Michael Chen',
-    role: 'E-commerce Owner',
-    content: 'The website they built increased our conversion rate by 40%. Fast delivery and exceptional quality!',
+    name: "Rajesh Patel",
+    role: "Restaurant Owner",
+    content: "Our restaurant website looks fantastic. The online ordering system works smoothly, and we have seen a 50% increase in takeaway orders since launch.",
     rating: 5,
-    avatar: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop&crop=face'
+    avatar: "https://ui-avatars.com/api/?name=Rajesh+Patel&background=random&size=150"
+  },
+  {
+    name: "Anjali Mehta",
+    role: "Wellness Center Director",
+    content: "The team delivered exactly what we needed - a professional, fast-loading website that showcases our wellness services beautifully.",
+    rating: 5,
+    avatar: "https://ui-avatars.com/api/?name=Anjali+Mehta&background=random&size=150"
   }
 ];
 

@@ -67,46 +67,44 @@ const processSteps = [
 
 const pricingPlans = [
   {
-    name: 'Local SEO',
-    price: '$1,200',
-    duration: 'per month',
+    name: 'Basic SEO',
+    price: '₹10,000',
+    duration: '/month',
+    description: 'Essential SEO services for small businesses',
     features: [
-      'Local keyword optimization',
-      'Google My Business setup',
-      'Citation building',
-      'Monthly reporting',
-      '10 target keywords'
+      'Keyword Research',
+      'On-Page SEO',
+      'Technical SEO Audit',
+      'Monthly Reporting',
+      'Local SEO Setup'
     ],
     popular: false
   },
   {
-    name: 'SEO + Google Ads',
-    price: '$2,800',
-    duration: 'per month',
+    name: 'SEO + Ads',
+    price: '₹14,999',
+    duration: '/month',
+    description: 'Comprehensive search presence management',
     features: [
-      'Comprehensive SEO strategy',
-      'Google Ads management',
-      'Keyword research & optimization',
-      'Landing page optimization',
-      'Bi-weekly reporting',
-      '25 target keywords',
-      '$2,000 ad spend included'
+      'Full SEO Service',
+      'Google Ads Management',
+      'Content Strategy',
+      'Weekly Reporting',
+      'Competitor Analysis',
     ],
     popular: true
   },
   {
     name: 'Enterprise',
-    price: '$5,500',
-    duration: 'per month',
+    price: '₹19,999',
+    duration: '/month',
+    description: 'Full-scale search marketing solution',
     features: [
-      'Full-scale SEO campaign',
-      'Multi-platform PPC management',
-      'Advanced analytics setup',
-      'Conversion rate optimization',
-      'Weekly strategy calls',
-      'Unlimited keywords',
-      '$5,000 ad spend included',
-      'Dedicated account manager'
+      'Advanced SEO & SEM',
+      'Custom Strategy',
+      'International SEO',
+      'Advanced Analytics',
+      'Dedicated Manager'
     ],
     popular: false
   }
@@ -114,18 +112,25 @@ const pricingPlans = [
 
 const testimonials = [
   {
-    name: 'Robert Chen',
-    role: 'E-commerce Director',
-    content: 'Our organic traffic increased by 400% and Google Ads ROI improved to 8:1. Exceptional results!',
+    name: "Rahul Gupta",
+    role: "Local Business Owner",
+    content: "Our organic traffic increased by 300% and Google Ads ROI improved to 7:1. We're now ranking #1 for our main keywords!",
     rating: 5,
-    avatar: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop&crop=face'
+    avatar: "https://ui-avatars.com/api/?name=Rahul+Gupta&background=random&size=150"
   },
   {
-    name: 'Maria Gonzalez',
-    role: 'Local Business Owner',
-    content: 'We went from page 3 to #1 on Google for our main keywords. Phone calls and foot traffic doubled.',
+    name: "Sunita Reddy",
+    role: "Restaurant Owner",
+    content: "After their SEO work, our store appears on the first page for all relevant searches. Walk-in customers have increased significantly.",
     rating: 5,
-    avatar: 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop&crop=face'
+    avatar: "https://ui-avatars.com/api/?name=Sunita+Reddy&background=random&size=150"
+  },
+  {
+    name: "Karthik Iyer",
+    role: "Business Owner",
+    content: "Their Google Ads expertise helped us reduce cost per lead by 40%. Now we're getting more qualified leads within the same budget.",
+    rating: 5,
+    avatar: "https://ui-avatars.com/api/?name=Karthik+Iyer&background=random&size=150"
   }
 ];
 

@@ -5,8 +5,8 @@ let searchIndex: lunr.Index | null = null;
 let posts: BlogMetadata[] = [];
 
 // Initialize search index
-export function initializeSearchIndex() {
-  posts = getAllPosts();
+export async function initializeSearchIndex() {
+  posts = await getAllPosts();
   
   searchIndex = lunr(function () {
     this.ref('slug');
@@ -28,9 +28,9 @@ export function initializeSearchIndex() {
 }
 
 // Search posts
-export function searchPosts(query: string): BlogMetadata[] {
+export async function searchPosts(query: string): Promise<BlogMetadata[]> {
   if (!searchIndex) {
-    initializeSearchIndex();
+    await initializeSearchIndex();
   }
   
   if (!query.trim()) {

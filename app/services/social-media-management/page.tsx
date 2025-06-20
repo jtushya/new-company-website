@@ -68,45 +68,45 @@ const processSteps = [
 const pricingPlans = [
   {
     name: 'Starter',
-    price: '$1,500',
-    duration: 'per month',
+    price: '₹7500',
+    duration: '/month',
+    description: 'Perfect for small businesses and personal brands',
     features: [
-      '3 social media platforms',
-      '12 posts per month',
-      'Basic graphics design',
-      'Community management',
-      'Monthly analytics report'
+      '2 Social Platforms',
+      '12 Posts per Month',
+      'Basic Content Strategy',
+      'Monthly Reports',
+      'Community Management'
     ],
     popular: false
   },
   {
-    name: 'Professional',
-    price: '$3,500',
-    duration: 'per month',
+    name: 'Growth',
+    price: '₹15,000',
+    duration: '/month',
+    description: 'Ideal for growing businesses and influencers',
     features: [
-      '5 social media platforms',
-      '20 posts per month',
-      'Custom graphics & videos',
-      'Stories & reels creation',
-      'Advanced community management',
-      'Bi-weekly strategy calls',
-      'Detailed analytics dashboard'
+      '4 Social Platforms',
+      '24 Posts per Month',
+      'Advanced Strategy',
+      'Weekly Reports',
+      'Paid Ads Management',
+      'Influencer Outreach'
     ],
     popular: true
   },
   {
-    name: 'Enterprise',
-    price: '$6,500',
-    duration: 'per month',
+    name: 'Premium',
+    price: '₹15,000',
+    duration: '/month',
+    description: 'Complete social media presence management',
     features: [
-      'All social media platforms',
-      'Unlimited posts',
-      'Professional video production',
-      'Influencer collaborations',
-      '24/7 community management',
-      'Weekly strategy sessions',
-      'Custom reporting',
-      'Dedicated account manager'
+      'All Social Platforms',
+      'Daily Content',
+      'Custom Strategy',
+      'Real-time Analytics',
+      'Crisis Management',
+      'Brand Monitoring'
     ],
     popular: false
   }
@@ -114,18 +114,25 @@ const pricingPlans = [
 
 const testimonials = [
   {
-    name: 'Emma Rodriguez',
-    role: 'Influencer & Content Creator',
-    content: 'My follower count grew from 10K to 100K in just 6 months. The content strategy was spot-on!',
+    name: "Neha Sharma",
+    role: "Fashion Influencer",
+    content: "Their Instagram management helped me grow from 15K to 100K followers in 4 months. The engagement on my posts has tripled!",
     rating: 5,
-    avatar: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop&crop=face'
+    avatar: "https://ui-avatars.com/api/?name=Neha+Sharma&background=random&size=150"
   },
   {
-    name: 'James Wilson',
-    role: 'Restaurant Owner',
-    content: 'Our social media presence transformed our business. We see 40% more customers from social media now.',
+    name: "Ravi Malhotra",
+    role: "Restaurant Owner",
+    content: "Our social media presence has transformed our business. Now 50% of our new customers discover us through Instagram and Facebook.",
     rating: 5,
-    avatar: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop&crop=face'
+    avatar: "https://ui-avatars.com/api/?name=Ravi+Malhotra&background=random&size=150"
+  },
+  {
+    name: "Pooja Singhania",
+    role: "Handicrafts Entrepreneur",
+    content: "Their social media strategy helped us showcase our handcrafted products beautifully. Our online sales have grown by 200%.",
+    rating: 5,
+    avatar: "https://ui-avatars.com/api/?name=Pooja+Singhania&background=random&size=150"
   }
 ];
 

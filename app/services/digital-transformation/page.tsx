@@ -68,7 +68,7 @@ const processSteps = [
 const pricingPlans = [
   {
     name: 'Starter',
-    price: '$15,000',
+    price: '₹15,000',
     duration: 'one-time',
     features: [
       'Digital readiness assessment',
@@ -81,7 +81,7 @@ const pricingPlans = [
   },
   {
     name: 'Professional',
-    price: '$35,000',
+    price: '₹25,000',
     duration: 'one-time',
     features: [
       'Complete digital audit',
@@ -89,14 +89,14 @@ const pricingPlans = [
       'Process automation (5 workflows)',
       'Security implementation',
       '6 months support',
-      'Training for 20 users',
+      'Training for 10 users',
       'Custom integrations'
     ],
     popular: true
   },
   {
     name: 'Enterprise',
-    price: '$75,000',
+    price: '₹50,000',
     duration: 'one-time',
     features: [
       'Enterprise-wide transformation',
@@ -114,18 +114,18 @@ const pricingPlans = [
 
 const testimonials = [
   {
-    name: 'Michael Rodriguez',
-    role: 'CTO, TechCorp',
-    content: 'Planckk transformed our entire digital infrastructure in just 3 months. The ROI was immediate and substantial.',
+    name: 'Rajesh Sharma',
+    role: 'CTO, Tech Solutions Ltd',
+    content: 'Planckk transformed our entire digital infrastructure in just 1 month. The ROI was immediate and substantial.',
     rating: 5,
-    avatar: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop&crop=face'
+    avatar: 'https://ui-avatars.com/api/?name=Rajesh+Sharma&background=random'
   },
   {
-    name: 'Lisa Chen',
-    role: 'Operations Director, GlobalManufacturing',
+    name: 'Priya Patel',
+    role: 'Operations Director, Global Manufacturing',
     content: 'The process automation alone saved us 40 hours per week. Outstanding results and professional service.',
     rating: 5,
-    avatar: 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop&crop=face'
+    avatar: 'https://ui-avatars.com/api/?name=Priya+Patel&background=random'
   }
 ];
 

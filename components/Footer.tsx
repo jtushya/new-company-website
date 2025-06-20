@@ -156,15 +156,15 @@ export default function Footer() {
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <Mail size={16} className="text-gray-400" />
-                <span className="text-gray-300 text-sm">hello@planckk.com</span>
+                <a href="mailto:info@planckk.com" className="text-gray-300 text-sm hover:underline">info@planckk.com</a>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone size={16} className="text-gray-400" />
-                <span className="text-gray-300 text-sm">+1 (555) 123-4567</span>
+                <a href="tel:+919384107679" className="text-gray-300 text-sm hover:underline">+91 93841 07679</a>
               </div>
               <div className="flex items-center space-x-3">
                 <MapPin size={16} className="text-gray-400" />
-                <span className="text-gray-300 text-sm">San Francisco, CA</span>
+                <span className="text-gray-300 text-sm">Chennai, India</span>
               </div>
             </div>
           </motion.div>
@@ -179,7 +179,7 @@ export default function Footer() {
           viewport={{ once: true }}
         >
           <p className="text-gray-400 text-sm">
-            © 2024 Planckk. All rights reserved.
+            {/* © 2024 Planckk. All rights reserved. */}
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <Link href="/privacy" className="text-gray-400 hover:text-white text-sm transition-colors">

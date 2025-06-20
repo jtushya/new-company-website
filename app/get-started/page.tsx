@@ -23,6 +23,8 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { submitToGoogleForm } from '@/lib/forms';
+import { toast } from 'sonner';
 
 const services = [
   { value: 'website-creation', label: 'Website Creation', icon: Globe },
@@ -39,25 +41,28 @@ const contactInfo = [
   {
     icon: Mail,
     title: 'Email Us',
-    content: 'hello@planckk.com',
+    content: 'info@planckk.com',
+    link: 'mailto:info@planckk.com',
     description: 'Send us an email anytime'
   },
   {
     icon: Phone,
     title: 'Call Us',
-    content: '+1 (555) 123-4567',
-    description: 'Mon-Fri from 8am to 6pm'
+    content: '+91 93841 07679',
+    link: 'tel:+919384107679',
+    description: 'Available 24/7'
   },
   {
-    icon: MapPin,
-    title: 'Visit Us',
-    content: 'San Francisco, CA',
-    description: 'Come say hello at our office'
+    icon: MessageSquare,
+    title: 'WhatsApp',
+    content: '+91 93841 07679',
+    link: 'https://wa.me/919384107679',
+    description: 'Chat with us instantly'
   },
   {
     icon: Clock,
     title: 'Response Time',
-    content: 'Within 2 hours',
+    content: 'Within 30 minutes',
     description: 'We respond fast to all inquiries'
   }
 ];
@@ -94,11 +99,27 @@ export default function GetStarted() {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+    try {
+      const success = await submitToGoogleForm(formData, 'get-started');
+      
+      if (success) {
+        setIsSubmitted(true);
+      } else {
+        throw new Error('Submission failed');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      toast.error(
+        <div>
+          <p>Sorry, we couldn't submit your request.</p>
+          <p>Please contact us directly:</p>
+          <a href="tel:+919384107679" className="block hover:underline">+91 93841 07679</a>
+          <a href="mailto:info@planckk.com" className="block hover:underline">info@planckk.com</a>
+        </div>
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (isSubmitted) {
@@ -120,7 +141,7 @@ export default function GetStarted() {
           </motion.div>
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Thank You!</h1>
           <p className="text-xl text-gray-300 mb-8">
-            We've received your request and will get back to you within 2 hours. 
+            We've received your request and will get back to you within 30 minutes. 
             Our team is already reviewing your project details.
           </p>
           <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20 mb-8">
@@ -268,7 +289,7 @@ export default function GetStarted() {
                           type="tel"
                           value={formData.phone}
                           onChange={(e) => handleInputChange('phone', e.target.value)}
-                          placeholder="+1 (555) 123-4567"
+                          placeholder="+91 98765 43210"
                           className="w-full"
                         />
                       </div>
@@ -305,11 +326,10 @@ export default function GetStarted() {
                             <SelectValue placeholder="Select budget" />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="under-1k">Under $1,000</SelectItem>
-                            <SelectItem value="1k-5k">$1,000 - $5,000</SelectItem>
-                            <SelectItem value="5k-10k">$5,000 - $10,000</SelectItem>
-                            <SelectItem value="10k-25k">$10,000 - $25,000</SelectItem>
-                            <SelectItem value="25k-plus">$25,000+</SelectItem>
+                            <SelectItem value="under-5l">Under ₹5 Lakhs</SelectItem>
+                            <SelectItem value="5l-15l">₹5 Lakhs - ₹15 Lakhs</SelectItem>
+                            <SelectItem value="15l-50l">₹15 Lakhs - ₹50 Lakhs</SelectItem>
+                            <SelectItem value="50l-plus">₹50 Lakhs+</SelectItem>
                           </SelectContent>
                         </Select>
                       </div>
@@ -388,7 +408,18 @@ export default function GetStarted() {
                         </div>
                         <div>
                           <h4 className="font-semibold text-gray-900 mb-1">{info.title}</h4>
-                          <p className="text-purple-600 font-medium mb-1">{info.content}</p>
+                          {info.link ? (
+                            <a 
+                              href={info.link} 
+                              className="text-purple-600 hover:text-purple-700 font-medium mb-1 block"
+                              target={info.link.startsWith('http') ? '_blank' : undefined}
+                              rel={info.link.startsWith('http') ? 'noopener noreferrer' : undefined}
+                            >
+                              {info.content}
+                            </a>
+                          ) : (
+                            <p className="text-purple-600 font-medium mb-1">{info.content}</p>
+                          )}
                           <p className="text-gray-600 text-sm">{info.description}</p>
                         </div>
                       </div>
