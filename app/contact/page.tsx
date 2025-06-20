@@ -259,11 +259,12 @@ export default function Contact() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">
-                          Phone
+                          Phone *
                         </label>
                         <input
                           type="tel"
                           name="phone"
+                          required
                           value={formData.phone}
                           onChange={handleInputChange}
                           className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
@@ -342,11 +343,10 @@ export default function Contact() {
                     
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Message *
+                        Message
                       </label>
                       <textarea
                         name="message"
-                        required
                         rows={4}
                         value={formData.message}
                         onChange={handleInputChange}

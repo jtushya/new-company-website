@@ -283,10 +283,11 @@ export default function GetStarted() {
                       </div>
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">
-                          Phone Number
+                          Phone Number *
                         </label>
                         <Input
                           type="tel"
+                          required
                           value={formData.phone}
                           onChange={(e) => handleInputChange('phone', e.target.value)}
                           placeholder="+91 98765 43210"
@@ -297,7 +298,7 @@ export default function GetStarted() {
 
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Service Needed *
+                        Service Needed
                       </label>
                       <Select value={formData.service} onValueChange={(value) => handleInputChange('service', value)}>
                         <SelectTrigger className="w-full">
@@ -353,10 +354,9 @@ export default function GetStarted() {
 
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Project Details *
+                        Project Details
                       </label>
                       <Textarea
-                        required
                         value={formData.message}
                         onChange={(e) => handleInputChange('message', e.target.value)}
                         placeholder="Tell us about your project, goals, and any specific requirements..."
