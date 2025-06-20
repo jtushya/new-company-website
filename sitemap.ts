@@ -7,7 +7,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Get all blog posts
   const posts = await getAllPosts();
   
-  // Static pages
+  // Static pages with enhanced priority and frequency
   const staticPages = [
     {
       url: baseUrl,
@@ -27,11 +27,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'weekly' as const,
       priority: 0.9,
     },
+    // Service pages with high priority
     {
       url: `${baseUrl}/services/website-creation`,
       lastModified: new Date(),
       changeFrequency: 'weekly' as const,
-      priority: 0.8,
+      priority: 0.9,
     },
     {
       url: `${baseUrl}/services/video-editing`,
@@ -105,15 +106,30 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'weekly' as const,
       priority: 0.5,
     },
+   
   ];
 
-  // Blog post pages
+  // Blog post pages with proper priorities
   const blogPages = posts.map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,
     lastModified: new Date(post.date),
     changeFrequency: 'monthly' as const,
+    priority: post.featured ? 0.8 : 0.6,
+  }));
+
+  // Service category pages
+  const serviceCategories = [
+    'web-development',
+    'digital-marketing',
+    'video-production',
+    'mobile-development',
+    'consulting'
+  ].map(category => ({
+    url: `${baseUrl}/services/category/${category}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly' as const,
     priority: 0.7,
   }));
 
-  return [...staticPages, ...blogPages];
+  return [...staticPages, ...blogPages, ...serviceCategories];
 }
