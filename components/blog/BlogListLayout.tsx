@@ -21,26 +21,23 @@ export default function BlogListLayout({
   initialTags, 
   featuredPosts 
 }: BlogListLayoutProps) {
-  // Initialize posts state
   const [filteredPosts, setFilteredPosts] = useState<BlogMetadata[]>(initialPosts);
   const [currentPage, setCurrentPage] = useState(1);
+  
   // Calculate pagination
   const totalPages = Math.max(1, Math.ceil(filteredPosts.length / POSTS_PER_PAGE));
   const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
   const endIndex = Math.min(startIndex + POSTS_PER_PAGE, filteredPosts.length);
   const paginatedPosts = filteredPosts.slice(startIndex, endIndex);
   
-  // Ensure current page is valid
+  // Reset to page 1 when posts change
   useEffect(() => {
-    if (currentPage > totalPages) {
-      setCurrentPage(1);
-    }
-  }, [filteredPosts.length, currentPage, totalPages]);
+    setCurrentPage(1);
+  }, [filteredPosts.length]);
 
   // Handle search results
   const handleSearch = (results: BlogMetadata[]) => {
     setFilteredPosts(results);
-    setCurrentPage(1);
   };
 
   // Handle tag filtering
@@ -57,42 +54,23 @@ export default function BlogListLayout({
       );
       setFilteredPosts(filtered);
     }
-    setCurrentPage(1);
   };
 
-  // Initialize page from URL after mount
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    const params = new URLSearchParams(window.location.search);
-    const page = Number(params.get('page')) || 1;
-    const validPage = Math.max(1, Math.min(page, totalPages));
-    setCurrentPage(validPage);
-  }, [totalPages]);
   // Handle page changes
   const handlePageChange = (newPage: number) => {
-    // Ensure the page number is valid
     const validPage = Math.max(1, Math.min(newPage, totalPages));
+    setCurrentPage(validPage);
     
-    // Only update if it's actually a different page
-    if (validPage !== currentPage) {
-      setCurrentPage(validPage);
-      
-      // Update URL
-      if (typeof window !== 'undefined') {
-        const params = new URLSearchParams(window.location.search);
-        if (validPage === 1) {
-          params.delete('page'); // Remove page parameter for page 1
-        } else {
-          params.set('page', validPage.toString());
-        }
-        const newUrl = `${window.location.pathname}${params.toString() ? '?' + params.toString() : ''}`;
-        window.history.pushState({}, '', newUrl);
-      }
+    // Scroll to top of blog section
+    const blogSection = document.getElementById('blog-posts-section');
+    if (blogSection) {
+      blogSection.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
   return (
-    <div className="max-w-[1400px] mx-auto space-y-16">      {/* Featured Posts */}
+    <div className="max-w-[1400px] mx-auto space-y-16">
+      {/* Featured Posts */}
       {featuredPosts.length > 0 && (
         <motion.section
           initial={{ opacity: 0, y: 20 }}
@@ -128,6 +106,7 @@ export default function BlogListLayout({
 
       {/* Search and Filters Section */}
       <motion.section
+        id="blog-posts-section"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
@@ -145,6 +124,7 @@ export default function BlogListLayout({
         <div className="flex justify-between items-center">
           <p className="text-gray-600 font-medium">
             {filteredPosts.length} article{filteredPosts.length !== 1 ? 's' : ''} found
+            {currentPage > 1 && ` (Page ${currentPage} of ${totalPages})`}
           </p>
         </div>
 
@@ -158,7 +138,8 @@ export default function BlogListLayout({
             <h3 className="text-xl font-semibold mb-2">No articles found</h3>
             <p className="text-gray-500">Try adjusting your search or filter criteria</p>
           </motion.div>
-        ) : (          <motion.div
+        ) : (
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             layout
@@ -172,7 +153,9 @@ export default function BlogListLayout({
               />
             ))}
           </motion.div>
-        )}        {/* Pagination */}
+        )}
+
+        {/* Pagination */}
         {totalPages > 1 && (
           <div className="mt-12 flex justify-center">
             <BlogPagination
