@@ -1,9 +1,7 @@
 import { readdir, readFile } from 'fs/promises';
 import path from 'path';
 import matter from 'gray-matter';
-import { remark } from 'remark';
-import html from 'remark-html';
-import remarkGfm from 'remark-gfm';
+import { marked } from 'marked';
 import { cache } from 'react';
 
 const postsDirectory = path.join(process.cwd(), 'content/blog');
@@ -39,6 +37,54 @@ export interface BlogMetadata {
   featured?: boolean;
 }
 
+// Add Tailwind CSS classes to HTML output
+function addTailwindClasses(html: string): string {
+  return html
+    // Headers
+    .replace(/<h1/g, '<h1 class="scroll-m-20 text-4xl font-bold mt-12 mb-6 text-gray-900 border-b pb-4"')
+    .replace(/<h2/g, '<h2 class="scroll-m-20 text-3xl font-semibold mt-10 mb-4 text-gray-900"')
+    .replace(/<h3/g, '<h3 class="scroll-m-20 text-2xl font-semibold mt-8 mb-3 text-gray-900"')
+    // Paragraphs
+    .replace(/<p>/g, '<p class="text-lg leading-relaxed mb-6 text-gray-700">')
+    // Lists
+    .replace(/<ul>/g, '<ul class="my-6 ml-6 list-disc text-gray-700 [&>li]:mt-2">')
+    .replace(/<ol>/g, '<ol class="my-6 ml-6 list-decimal text-gray-700 [&>li]:mt-2">')
+    // Links
+    .replace(
+      /<a href="([^"]+)"/g,
+      (_, href) => `<a href="${href}" class="font-medium text-purple-600 hover:text-purple-800 underline underline-offset-4 decoration-purple-300 hover:decoration-purple-500 transition-colors"${
+        href.startsWith('http') ? ' target="_blank" rel="noopener noreferrer"' : ''
+      }`
+    )
+    // Code blocks
+    .replace(
+      /<pre><code class="language-([^"]+)">/g,
+      (_, lang) => `
+        <div class="relative group">
+          <div class="absolute right-4 top-2 text-gray-400 text-sm font-mono opacity-0 group-hover:opacity-100 transition-opacity">
+            ${lang}
+          </div>
+          <pre class="bg-gray-900 text-gray-100 p-6 rounded-lg overflow-x-auto mb-6 text-sm"><code class="language-${lang}">`
+    )
+    .replace(/<\/code><\/pre>/g, '</code></pre></div>')
+    // Inline code
+    .replace(/<code>/g, '<code class="bg-gray-100 text-purple-600 px-2 py-1 rounded text-sm font-mono">')
+    // Blockquotes
+    .replace(/<blockquote>/g, '<blockquote class="mt-6 border-l-4 border-purple-500 pl-6 py-4 my-8 bg-purple-50 italic text-gray-700">');
+}
+
+// Configure marked options
+marked.setOptions({
+  gfm: true,
+  breaks: true
+});
+
+// Update the markdown processing to use our enhanced HTML
+export function processMarkdown(content: string): string {
+  const html = marked.parse(content);
+  return addTailwindClasses(html.toString());
+}
+
 // Get all blog post slugs
 export async function getAllPostSlugs() {
   try {
@@ -69,11 +115,8 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
     
     const { data, content } = matter(fileContent);
     
-    const processedContent = await remark()
-      .use(html)
-      .use(remarkGfm)
-      .process(content);
-    const contentHtml = processedContent.toString();
+    // Convert markdown to HTML with enhanced styling
+    const contentHtml = processMarkdown(content);
 
     return {
       slug,
@@ -175,15 +218,6 @@ export const getFeaturedPosts = cache(async (): Promise<BlogMetadata[]> => {
     return [];
   }
 });
-
-// Convert markdown to HTML
-export async function markdownToHtml(markdown: string) {
-  const result = await remark()
-    .use(remarkGfm)
-    .use(html, { sanitize: false })
-    .process(markdown);
-  return result.toString();
-}
 
 // Pagination helper
 export async function getPaginatedPosts(page: number = 1, postsPerPage: number = 6): Promise<{

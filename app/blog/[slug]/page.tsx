@@ -4,6 +4,7 @@ import { MDXComponents } from '@/components/blog/MDXComponents';
 import BlogLayout from '@/components/blog/BlogLayout';
 import CustomLayout from '@/components/blog/CustomLayout';
 import { Metadata } from 'next';
+import { MDXContent } from '@/components/blog/MDXContent';
 
 interface BlogPostPageProps {
   params: {
@@ -30,8 +31,21 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   }
 
   return {
-    title: post.metaTitle || post.title,
+    title: post.metaTitle || `${post.title} | Planckk Blog`,
     description: post.metaDescription || post.excerpt,
+    openGraph: {
+      title: post.metaTitle || post.title,
+      description: post.metaDescription || post.excerpt,
+      type: 'article',
+      images: post.image ? [{ url: post.image }] : undefined,
+      authors: [post.author],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.metaTitle || post.title,
+      description: post.metaDescription || post.excerpt,
+      images: post.image ? [post.image] : undefined,
+    },
   };
 }
 
@@ -46,10 +60,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <Layout post={post}>
-      <article 
-        className="prose prose-lg max-w-none"
-        dangerouslySetInnerHTML={{ __html: post.content }}
-      />
+      <article className="prose prose-lg max-w-none dark:prose-invert prose-headings:font-bold prose-a:text-blue-600 hover:prose-a:text-blue-500">
+        <MDXContent source={post.content} />
+      </article>
     </Layout>
   );
 }

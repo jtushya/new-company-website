@@ -79,15 +79,89 @@ export default function BlogLayout({ post, children }: BlogLayoutProps) {
       </div>
 
       {/* Content */}
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <motion.article
-          className="prose prose-lg max-w-none"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          {children}
-        </motion.article>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="flex flex-col lg:flex-row gap-12">
+          {/* Main Content */}
+          <motion.article
+            className="prose prose-lg max-w-4xl lg:min-w-0 lg:flex-1"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            {children}
+          </motion.article>
+
+          {/* Table of Contents Sidebar */}
+          <aside className="lg:w-64 xl:w-72">
+            <div className="sticky top-24">
+              <nav className="space-y-6">
+                {/* ToC will be automatically generated from headings */}
+                <div className="hidden lg:block">
+                  <h4 className="text-sm font-semibold mb-4 text-gray-900">
+                    On this page
+                  </h4>
+                  <div className="text-sm space-y-2">
+                    {/* ToC items will be dynamically inserted here */}
+                  </div>
+                </div>
+
+                {/* Share Buttons */}
+                <div>
+                  <h4 className="text-sm font-semibold mb-4 text-gray-900">
+                    Share this post
+                  </h4>
+                  <div className="flex gap-2">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => {
+                        const url = window.location.href;
+                        const text = `Check out "${post.title}" on Planckk`;
+                        window.open(
+                          `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`,
+                          '_blank'
+                        );
+                      }}
+                    >
+                      Twitter
+                    </Button>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => {
+                        const url = window.location.href;
+                        window.open(
+                          `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`,
+                          '_blank'
+                        );
+                      }}
+                    >
+                      LinkedIn
+                    </Button>
+                  </div>
+                </div>
+
+                {/* Tags */}
+                <div>
+                  <h4 className="text-sm font-semibold mb-4 text-gray-900">
+                    Tags
+                  </h4>
+                  <div className="flex flex-wrap gap-2">
+                    {post.tags.map((tag, index) => (
+                      <Link
+                        key={index}
+                        href={`/blog?tag=${encodeURIComponent(tag)}`}
+                        className="text-sm px-3 py-1 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700 transition-colors"
+                      >
+                        {tag}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </nav>
+            </div>
+          </aside>
+        </div>
       </div>
     </div>
   );

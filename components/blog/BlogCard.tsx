@@ -95,9 +95,34 @@ export default function BlogCard({ post, index = 0, featured = false }: BlogCard
                 {post.title}
               </h3>
 
-              <p className="text-gray-600 mb-6 line-clamp-2 leading-relaxed">
-                {post.excerpt}
-              </p>
+              <p 
+                className="text-gray-600 mb-6 line-clamp-2 leading-relaxed"
+                dangerouslySetInnerHTML={{ __html: post.excerpt }}
+              />
+
+              {/* Metadata */}
+              <div className="flex flex-wrap gap-4 text-sm text-gray-500">
+                <div className="flex items-center">
+                  <Calendar className="w-4 h-4 mr-1.5" />
+                  {new Date(post.date).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric'
+                  })}
+                </div>
+                {post.readTime && (
+                  <div className="flex items-center">
+                    <Clock className="w-4 h-4 mr-1.5" />
+                    {post.readTime} min read
+                  </div>
+                )}
+                {post.author && (
+                  <div className="flex items-center">
+                    <User className="w-4 h-4 mr-1.5" />
+                    {post.author}
+                  </div>
+                )}
+              </div>
             </div>
 
             <div className="space-y-4">
