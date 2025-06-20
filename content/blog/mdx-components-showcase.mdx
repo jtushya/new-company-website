@@ -1,0 +1,135 @@
+---
+title: "Component Showcase: Using MDX in Your Blog"
+date: "2025-06-21"
+author: "Planckk Team"
+tags: ["Web Development", "MDX", "React", "UI/UX"]
+excerpt: "Learn how to use the custom MDX components available in our blog posts to create rich, interactive content."
+metaTitle: "MDX Component Guide: Create Rich Blog Content"
+metaDescription: "Guide to using custom MDX components in your blog posts. Learn about alerts, code blocks, cards, and more interactive elements."
+image: "/blog/mdx-components.jpg"
+readTime: 5
+featured: true
+---
+
+# Component Showcase: Using MDX in Your Blog
+
+This guide demonstrates all the custom components available for your blog posts using MDX.
+
+## Basic Text Formatting
+
+You can write normal paragraphs with **bold** and *italic* text. Links work too - visit [our homepage](/) or [external sites](https://github.com).
+
+## Lists
+
+Unordered lists:
+- First item
+- Second item
+- Third item with nested content
+  - Sub-item 1
+  - Sub-item 2
+
+Ordered lists:
+1. First step
+2. Second step
+3. Third step
+
+## Blockquotes
+
+> This is a blockquote. Use it to highlight important information or quotes from other sources.
+> 
+> You can have multiple paragraphs in blockquotes.
+
+## Alert Components
+
+### Info/Tip Alert
+
+<Tip>
+  Here's a useful tip about using our components. Tips are great for providing additional context or helpful information.
+</Tip>
+
+### Warning Alert
+
+<Warning>
+  Be careful with this feature. Warnings help highlight potential issues or important considerations.
+</Warning>
+
+### Success Alert
+
+<Success>
+  Operation completed successfully! Use success alerts to confirm positive outcomes.
+</Success>
+
+### Error Alert
+
+<Error>
+  Something went wrong. Error alerts help communicate problems or critical warnings.
+</Error>
+
+## Code Blocks
+
+Simple inline code: `const greeting = "Hello, world!";`
+
+Code block with syntax highlighting:
+
+```javascript
+// This is a JavaScript code block
+function calculateTotal(items) {
+  return items
+    .filter(item => item.inStock)
+    .reduce((total, item) => total + item.price, 0);
+}
+```
+
+## Custom Card Component
+
+<Card title="Special Feature">
+  This card component is perfect for highlighting special content or features.
+  You can include any markdown content inside the card.
+
+  - Lists work
+  - **Bold** and *italic* too
+  - Even code: `console.log('hello')`
+</Card>
+
+## Call to Action Component
+
+<CallToAction href="/contact">
+  Ready to start your digital transformation journey?
+</CallToAction>
+
+## Code Block with Title
+
+<CodeBlock language="typescript">
+interface BlogPost {
+  title: string;
+  date: string;
+  content: string;
+}
+
+function formatDate(date: string): string {
+  return new Date(date).toLocaleDateString();
+}
+</CodeBlock>
+
+## Best Practices
+
+1. Use alerts sparingly to maintain their impact
+2. Keep code blocks focused and well-commented
+3. Break up long content with headings and cards
+4. Use call-to-actions strategically
+
+<Tip>
+  Remember to preview your post before publishing to ensure all components render correctly.
+</Tip>
+
+## Next Steps
+
+Now that you're familiar with our MDX components, you can:
+
+1. Start writing your own blog posts
+2. Experiment with different component combinations
+3. Create engaging, interactive content
+
+<CallToAction href="/blog">
+  Check out our other blog posts for inspiration
+</CallToAction>
