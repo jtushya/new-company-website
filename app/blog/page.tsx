@@ -9,10 +9,32 @@ export const metadata: Metadata = {
   description: 'Explore the latest articles and insights on technology, design, and digital innovation.',
 };
 
-export default async function BlogPage() {
+interface BlogPageProps {
+  searchParams: {
+    page?: string;
+    tag?: string;
+  };
+}
+
+export default async function BlogPage({ searchParams }: BlogPageProps) {
+  const currentPage = Number(searchParams.page) || 1;
+  const currentTag = searchParams.tag;
+  
   const posts = await getAllPosts();
   const tags = await getAllTags();
   const featuredPosts = await getFeaturedPosts();
+  
+  // Filter posts by tag if specified
+  const filteredPosts = currentTag 
+    ? posts.filter(post => post.tags.includes(currentTag))
+    : posts;
+    
+  // Calculate pagination
+  const postsPerPage = 6;
+  const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
+  const pageStart = (currentPage - 1) * postsPerPage;
+  const pageEnd = pageStart + postsPerPage;
+  const currentPosts = filteredPosts.slice(pageStart, pageEnd);
   
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">

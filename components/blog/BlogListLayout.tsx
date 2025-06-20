@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { BlogMetadata } from '@/lib/blog';
 import BlogCard from '@/components/blog/BlogCard';
@@ -21,13 +21,21 @@ export default function BlogListLayout({
   initialTags, 
   featuredPosts 
 }: BlogListLayoutProps) {
+  // Initialize posts state
   const [filteredPosts, setFilteredPosts] = useState<BlogMetadata[]>(initialPosts);
   const [currentPage, setCurrentPage] = useState(1);
-
   // Calculate pagination
-  const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
+  const totalPages = Math.max(1, Math.ceil(filteredPosts.length / POSTS_PER_PAGE));
   const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
-  const paginatedPosts = filteredPosts.slice(startIndex, startIndex + POSTS_PER_PAGE);
+  const endIndex = Math.min(startIndex + POSTS_PER_PAGE, filteredPosts.length);
+  const paginatedPosts = filteredPosts.slice(startIndex, endIndex);
+  
+  // Ensure current page is valid
+  useEffect(() => {
+    if (currentPage > totalPages) {
+      setCurrentPage(1);
+    }
+  }, [filteredPosts.length, currentPage, totalPages]);
 
   // Handle search results
   const handleSearch = (results: BlogMetadata[]) => {
@@ -42,7 +50,9 @@ export default function BlogListLayout({
     } else {
       const filtered = initialPosts.filter(post =>
         selectedTags.every(tag =>
-          post.tags.some(postTag => postTag.toLowerCase() === tag.toLowerCase())
+          post.tags.some(postTag => 
+            postTag.toLowerCase() === tag.toLowerCase()
+          )
         )
       );
       setFilteredPosts(filtered);
@@ -50,9 +60,39 @@ export default function BlogListLayout({
     setCurrentPage(1);
   };
 
+  // Initialize page from URL after mount
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const params = new URLSearchParams(window.location.search);
+    const page = Number(params.get('page')) || 1;
+    const validPage = Math.max(1, Math.min(page, totalPages));
+    setCurrentPage(validPage);
+  }, [totalPages]);
+  // Handle page changes
+  const handlePageChange = (newPage: number) => {
+    // Ensure the page number is valid
+    const validPage = Math.max(1, Math.min(newPage, totalPages));
+    
+    // Only update if it's actually a different page
+    if (validPage !== currentPage) {
+      setCurrentPage(validPage);
+      
+      // Update URL
+      if (typeof window !== 'undefined') {
+        const params = new URLSearchParams(window.location.search);
+        if (validPage === 1) {
+          params.delete('page'); // Remove page parameter for page 1
+        } else {
+          params.set('page', validPage.toString());
+        }
+        const newUrl = `${window.location.pathname}${params.toString() ? '?' + params.toString() : ''}`;
+        window.history.pushState({}, '', newUrl);
+      }
+    }
+  };
+
   return (
-    <div className="max-w-[1400px] mx-auto space-y-16">
-      {/* Featured Posts */}
+    <div className="max-w-[1400px] mx-auto space-y-16">      {/* Featured Posts */}
       {featuredPosts.length > 0 && (
         <motion.section
           initial={{ opacity: 0, y: 20 }}
@@ -65,18 +105,16 @@ export default function BlogListLayout({
           
           {/* Main Featured Post */}
           <div className="mb-8">
-            {featuredPosts.length > 0 && (
-              <BlogCard 
-                post={featuredPosts[0]} 
-                featured={true}
-              />
-            )}
+            <BlogCard 
+              post={featuredPosts[0]} 
+              featured={true}
+            />
           </div>
 
           {/* Secondary Featured Posts */}
           {featuredPosts.length > 1 && (
             <div className="grid md:grid-cols-2 gap-6 px-4">
-              {featuredPosts.slice(1, 3).map((post, index) => (
+              {featuredPosts.slice(1, 3).map((post: BlogMetadata, index: number) => (
                 <BlogCard 
                   key={post.slug} 
                   post={post} 
@@ -120,30 +158,27 @@ export default function BlogListLayout({
             <h3 className="text-xl font-semibold mb-2">No articles found</h3>
             <p className="text-gray-500">Try adjusting your search or filter criteria</p>
           </motion.div>
-        ) : (
-          <motion.div
+        ) : (          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             layout
             className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
           >
-            {paginatedPosts.map((post, index) => (
+            {paginatedPosts.map((post: BlogMetadata, index: number) => (
               <BlogCard 
                 key={post.slug} 
                 post={post} 
-                index={index + startIndex} 
+                index={startIndex + index} 
               />
             ))}
           </motion.div>
-        )}
-
-        {/* Pagination */}
+        )}        {/* Pagination */}
         {totalPages > 1 && (
           <div className="mt-12 flex justify-center">
             <BlogPagination
               currentPage={currentPage}
               totalPages={totalPages}
-              onPageChange={setCurrentPage}
+              onPageChange={handlePageChange}
             />
           </div>
         )}

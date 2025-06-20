@@ -14,6 +14,13 @@ interface BlogCardProps {
 }
 
 export default function BlogCard({ post, index = 0, featured = false }: BlogCardProps) {
+  // Format date
+  const formattedDate = new Date(post.date).toLocaleDateString('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric'
+  });
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -37,18 +44,19 @@ export default function BlogCard({ post, index = 0, featured = false }: BlogCard
             relative overflow-hidden
             ${featured ? 'lg:w-2/3' : 'aspect-[16/9]'}
           `}>
-            {post.image ? (
-              <Image
-                src={post.image}
-                alt={post.title}
-                fill
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
-                sizes={featured ? "(max-width: 1280px) 66vw, 50vw" : "(max-width: 768px) 100vw, 33vw"}
-                priority={featured}
-              />
-            ) : (
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-100 to-blue-100" />
-            )}
+            <Image
+              src={post.image || "https://images.pexels.com/photos/1181298/pexels-photo-1181298.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop"}
+              alt={post.title}
+              fill
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
+              sizes={featured ? "(max-width: 1280px) 66vw, 50vw" : "(max-width: 768px) 100vw, 33vw"}
+              priority={featured}
+              onError={(e) => {
+                // Fallback to default image on error
+                const imgElement = e.target as HTMLImageElement;
+                imgElement.src = "https://images.pexels.com/photos/1181298/pexels-photo-1181298.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop";
+              }}
+            />
             
             {/* Tags Overlay */}
             {post.tags && post.tags.length > 0 && (
@@ -95,72 +103,32 @@ export default function BlogCard({ post, index = 0, featured = false }: BlogCard
                 {post.title}
               </h3>
 
-              <p 
-                className="text-gray-600 mb-6 line-clamp-2 leading-relaxed"
-                dangerouslySetInnerHTML={{ __html: post.excerpt }}
-              />
+              <p className="text-gray-600 mb-6 line-clamp-2 leading-relaxed">
+                {post.excerpt}
+              </p>
+            </div>
 
-              {/* Metadata */}
-              <div className="flex flex-wrap gap-4 text-sm text-gray-500">
-                <div className="flex items-center">
-                  <Calendar className="w-4 h-4 mr-1.5" />
-                  {new Date(post.date).toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: 'short',
-                    day: 'numeric'
-                  })}
+            {/* Author, Date and Read Time */}
+            <div className="mt-4 flex items-center justify-between">
+              <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500">
+                <div className="flex items-center gap-1.5">
+                  <User className="h-4 w-4" />
+                  {post.author}
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <Calendar className="h-4 w-4" />
+                  {formattedDate}
                 </div>
                 {post.readTime && (
-                  <div className="flex items-center">
-                    <Clock className="w-4 h-4 mr-1.5" />
+                  <div className="flex items-center gap-1.5">
+                    <Clock className="h-4 w-4" />
                     {post.readTime} min read
                   </div>
                 )}
-                {post.author && (
-                  <div className="flex items-center">
-                    <User className="w-4 h-4 mr-1.5" />
-                    {post.author}
-                  </div>
-                )}
               </div>
-            </div>
-
-            <div className="space-y-4">
-              {/* Author Info */}
-              <div className="flex items-center gap-3">
-                {post.author && (
-                  <div className="flex items-center gap-2 text-gray-600">
-                    <User className="w-4 h-4" />
-                    <span className="text-sm font-medium">{post.author}</span>
-                  </div>
-                )}
-              </div>
-
-              {/* Meta Info */}
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-4 text-sm text-gray-500">
-                  <div className="flex items-center gap-1.5">
-                    <Calendar className="w-4 h-4" />
-                    <span>{new Date(post.date).toLocaleDateString("en-US", {
-                      month: "short",
-                      day: "numeric",
-                      year: "numeric",
-                    })}</span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <Clock className="w-4 h-4" />
-                    <span>{post.readTime} min read</span>
-                  </div>
-                </div>
-
-                <span className="
-                  inline-flex items-center gap-1
-                  text-sm font-medium text-purple-700
-                  group-hover:gap-2 transition-all duration-300
-                ">
-                  Read more
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </span>
+              <div className="flex items-center gap-2 text-purple-600 font-medium whitespace-nowrap">
+                Read more
+                <ArrowRight className="h-4 w-4" />
               </div>
             </div>
           </div>
