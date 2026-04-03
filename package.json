@@ -54,7 +54,7 @@
     "lunr": "^2.3.9",
     "marked": "^15.0.12",
     "next": "14.2.5",
-    "next-mdx-remote": "^5.0.0",
+    "next-mdx-remote": "^6.0.0",
     "next-themes": "^0.3.0",
     "postcss": "8.4.30",
     "react": "18.2.0",
