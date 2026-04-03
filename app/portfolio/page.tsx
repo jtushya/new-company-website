@@ -57,7 +57,7 @@ const projects = [
     image: '/images/portfolio/mental-homepage.png',
     tags: ['24/7 Support', 'Private Conversations', 'Crisis Resources'],
     deliveryTime: '24 hours',
-    client: 'Healthcare Industry',
+    client: 'Mental Welness Industry',
     link: 'mental-welness.vercel.app'
   },
   {
@@ -230,7 +230,17 @@ export default function Portfolio() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <Card className="h-full hover-lift cursor-pointer group overflow-hidden border-0 shadow-lg">
+                <Card
+                  className="h-full hover-lift cursor-pointer group overflow-hidden border-0 shadow-lg"
+                  onClick={() => project.link ? window.open(`https://${project.link}`, '_blank', 'noopener,noreferrer') : undefined}
+                  onKeyDown={(e) => {
+                    if (project.link && (e.key === 'Enter' || e.key === ' ')) {
+                      window.open(`https://${project.link}`, '_blank', 'noopener,noreferrer');
+                    }
+                  }}
+                  tabIndex={project.link ? 0 : -1}
+                  role={project.link ? 'link' : undefined}
+                >
                   <div className="relative overflow-hidden">
                     <img
                       src={project.image}
