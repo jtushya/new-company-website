@@ -62,14 +62,25 @@ const projects = [
   },
   {
     id: 5,
-    title: 'POSH Compliance Website',
+    title: 'Secura Compliances Website',
     category: 'Websites',
     description: 'Professional website for POSH compliance services and resources.',
-    image: '/images/portfolio/posh-compliance.png',
+    image: '/images/portfolio/Secura compliances website homepage.png',
     tags: ['Training Portal', 'Case Management', 'Policy Guidelines'],
     deliveryTime: '10 hours',
     client: 'Secura Compliances',
     link: 'secura-website.vercel.app'
+  },
+  {
+    id: 6,
+    title: 'IK Group Website',
+    category: 'Websites',
+    description: 'Corporate website for IK Group with modern responsive design.',
+    image: '/images/portfolio/Ik group website.png',
+    tags: ['Responsive Design', 'Contact Forms', 'SEO Optimized'],
+    deliveryTime: '14 hours',
+    client: 'IK Group',
+    link: 'ik-group-website.vercel.app'
   },
   // {
   //   id: 6,
