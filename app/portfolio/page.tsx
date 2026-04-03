@@ -148,7 +148,7 @@ export default function Portfolio() {
   });
 
   return (
-    <div className="pt-20">
+    <div className="pt-16 md:pt-20">
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 text-white relative overflow-hidden">
         {/* Background shapes */}

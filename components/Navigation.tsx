@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Zap } from 'lucide-react';
@@ -19,6 +20,7 @@ const navItems = [
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,17 +43,17 @@ export default function Navigation() {
       transition={{ duration: 0.6, ease: 'easeOut' }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center py-4">
+        <div className="flex justify-between items-center py-3 md:py-4">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3 hover-target">
             <motion.div
-              className="w-10 h-10 rounded-2xl bg-gradient-to-r from-purple-600 to-pink-600 flex items-center justify-center shadow-lg"
+              className="w-9 h-9 md:w-10 md:h-10 rounded-2xl bg-gradient-to-r from-purple-600 to-pink-600 flex items-center justify-center shadow-lg"
               whileHover={{ scale: 1.1, rotate: 5 }}
               transition={{ duration: 0.3 }}
             >
-              <Zap className="w-6 h-6 text-white" />
+              <Zap className="w-5 h-5 md:w-6 md:h-6 text-white" />
             </motion.div>
-            <span className="text-2xl font-bold text-gradient">Planckk</span>
+            <span className="text-lg md:text-2xl font-bold text-gradient">Planckk</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -77,8 +79,12 @@ export default function Navigation() {
 
           {/* Mobile menu button */}
           <button
-            className={`md:hidden p-2 rounded-lg transition-colors hover-target ${
-              scrolled ? 'text-gray-700 hover:bg-purple-50' : 'text-white hover:bg-white/10'
+            className={`md:hidden p-2 rounded-lg transition-colors hover-target flex items-center justify-center ${
+              scrolled
+                ? 'text-gray-700 hover:bg-purple-50'
+                : pathname === '/portfolio'
+                ? 'text-gray-700 hover:bg-transparent'
+                : 'text-white hover:bg-transparent'
             }`}
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
