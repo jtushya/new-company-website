@@ -24,7 +24,7 @@ export default function SEOHead({
   faqs
 }: SEOHeadProps) {
   const baseTitle = 'Planckk - Lightning-Fast Digital Transformation';
-  const baseDescription = 'Transform your business with Planckk\'s lightning-fast digital services. Professional websites in 6 hours, expert video editing, AI-powered marketing solutions.';
+  const baseDescription = 'Transform your business with Planckk\'s lightning-fast digital services. Professional websites in 12 hours, SEO optimization, and AI-powered marketing solutions.';
   
   const seoTitle = title ? `${title} | ${baseTitle}` : baseTitle;
   const seoDescription = description || baseDescription;

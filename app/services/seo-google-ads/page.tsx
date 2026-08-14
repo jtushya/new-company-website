@@ -27,19 +27,19 @@ const features = [
   {
     icon: TrendingUp,
     title: 'On-Page SEO',
-    description: 'Optimize your website content and structure for search engines',
+    description: 'Optimize your website content, meta tags, and structure for search engines',
     color: 'from-purple-500 to-pink-500'
   },
   {
     icon: Target,
-    title: 'Google Ads Management',
-    description: 'Strategic PPC campaigns that maximize ROI and drive conversions',
+    title: 'Technical SEO Audit',
+    description: 'Fix crawl issues, improve site speed, and enhance indexability',
     color: 'from-green-500 to-emerald-500'
   },
   {
     icon: BarChart3,
     title: 'Performance Tracking',
-    description: 'Detailed analytics and reporting to measure success and optimize',
+    description: 'Detailed search ranking reports and analytics to measure organic growth',
     color: 'from-orange-500 to-red-500'
   }
 ];
@@ -54,13 +54,13 @@ const processSteps = [
   {
     step: '02',
     title: 'Strategy Development',
-    description: 'Create targeted SEO and PPC strategies based on your business goals',
+    description: 'Create targeted SEO optimization strategies based on your business goals',
     icon: Target
   },
   {
     step: '03',
     title: 'Implementation & Optimization',
-    description: 'Execute campaigns and continuously optimize for maximum performance',
+    description: 'Execute on-page, technical, and content improvements for search dominance',
     icon: TrendingUp
   }
 ];
@@ -81,30 +81,30 @@ const pricingPlans = [
     popular: false
   },
   {
-    name: 'SEO + Ads',
+    name: 'Pro SEO',
     price: '₹14,999',
     duration: '/month',
-    description: 'Comprehensive search presence management',
+    description: 'Comprehensive search presence and ranking management',
     features: [
       'Full SEO Service',
-      'Google Ads Management',
-      'Content Strategy',
+      'Content Strategy & Optimization',
+      'Backlink Strategy',
       'Weekly Reporting',
       'Competitor Analysis',
     ],
     popular: true
   },
   {
-    name: 'Enterprise',
+    name: 'Enterprise SEO',
     price: '₹19,999',
     duration: '/month',
-    description: 'Full-scale search marketing solution',
+    description: 'Full-scale organic search optimization for large brands',
     features: [
-      'Advanced SEO & SEM',
-      'Custom Strategy',
+      'Advanced Technical SEO',
+      'Custom Content Architecture',
       'International SEO',
-      'Advanced Analytics',
-      'Dedicated Manager'
+      'Advanced Analytics & Tracking',
+      'Dedicated SEO Manager'
     ],
     popular: false
   }
@@ -114,70 +114,70 @@ const testimonials = [
   {
     name: "Rahul Gupta",
     role: "Local Business Owner",
-    content: "Our organic traffic increased by 300% and Google Ads ROI improved to 7:1. We're now ranking #1 for our main keywords!",
+    content: "Our organic traffic increased by 300% and we're now ranking #1 on Google for all our main target keywords!",
     rating: 5,
     avatar: "https://ui-avatars.com/api/?name=Rahul+Gupta&background=random&size=150"
   },
   {
     name: "Sunita Reddy",
     role: "Restaurant Owner",
-    content: "After their SEO work, our store appears on the first page for all relevant searches. Walk-in customers have increased significantly.",
+    content: "After their SEO work, our store appears on the first page for all relevant local searches. Walk-in customers have increased significantly.",
     rating: 5,
     avatar: "https://ui-avatars.com/api/?name=Sunita+Reddy&background=random&size=150"
   },
   {
     name: "Karthik Iyer",
     role: "Business Owner",
-    content: "Their Google Ads expertise helped us reduce cost per lead by 40%. Now we're getting more qualified leads within the same budget.",
+    content: "Their technical SEO expertise helped fix all indexing issues and boosted our search rankings across major search engines dramatically.",
     rating: 5,
     avatar: "https://ui-avatars.com/api/?name=Karthik+Iyer&background=random&size=150"
   }
 ];
 
-export default function SEOGoogleAds() {
+export default function SEOService() {
   return (
     <div className="pt-20">
       <ServiceHero
-        title="SEO & Google Ads"
-        subtitle="Dominate search results and drive qualified traffic"
-        description="Strategic SEO and targeted Google Ads campaigns that increase visibility, drive qualified traffic, and maximize your return on investment."
+        title="Search Engine Optimization (SEO)"
+        subtitle="Dominate search results and drive high-intent organic traffic"
+        description="Strategic SEO services that increase search visibility, drive high-intent organic traffic, and build sustainable long-term business growth."
         icon={Search}
         stats={[
           { number: '400%', label: 'Avg Traffic Increase' },
-          { number: '8:1', label: 'Average ROI' },
+          { number: '95%', label: 'Top 10 Rankings' },
           { number: '#1', label: 'Rankings Achieved' }
         ]}
       />
       
       <ServiceFeatures
-        title="Complete Search Marketing"
-        subtitle="Comprehensive SEO and PPC strategies that drive visibility and conversions."
+        title="Comprehensive SEO Services"
+        subtitle="Data-driven search engine optimization strategies that drive visibility and organic conversions."
         features={features}
       />
       
       <ServiceProcess
-        title="Our Search Marketing Process"
-        subtitle="A data-driven approach to dominating search results and maximizing ROI."
+        title="Our SEO Process"
+        subtitle="A proven, systematic approach to dominating search engine rankings."
         steps={processSteps}
       />
       
       <ServicePricing
-        title="Search Marketing Packages"
-        subtitle="Choose the right package to boost your search visibility and drive qualified traffic."
+        title="SEO Packages"
+        subtitle="Choose the right package to boost your search visibility and capture qualified organic leads."
         plans={pricingPlans}
       />
       
       <ServiceTestimonials
-        title="Search Success Stories"
-        subtitle="See how we've helped businesses achieve top rankings and exceptional ROI."
+        title="SEO Success Stories"
+        subtitle="See how we've helped businesses achieve top organic rankings and consistent traffic growth."
         testimonials={testimonials}
       />
       
       <ServiceCTA
         title="Ready to Dominate Search Results?"
-        subtitle="Let's increase your visibility and drive qualified traffic that converts."
-        primaryButtonText="Start Campaign"
-        secondaryButtonText="Get SEO Audit"
+        subtitle="Let's increase your search visibility and drive qualified organic traffic that converts."
+        primaryButtonText="Start SEO Project"
+        secondaryButtonText="Get Free SEO Audit"
       />
     </div>
   );

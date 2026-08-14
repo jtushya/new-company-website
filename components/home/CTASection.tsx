@@ -28,7 +28,7 @@ export default function CTASection() {
           </h2>
           <p className="text-xl md:text-2xl mb-8 text-gray-300 max-w-4xl mx-auto">
             Join hundreds of satisfied clients who have transformed their digital presence with Planckk.
-            Get started today and see results in just 6 hours.
+            Get started today and see results in just 12 hours.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Link href="/get-started">

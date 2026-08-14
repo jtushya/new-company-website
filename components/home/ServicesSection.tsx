@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { 
-  Play, 
+  Search, 
   Globe, 
   TrendingUp, 
   Smartphone, 
@@ -14,15 +14,15 @@ import Link from 'next/link';
 
 const services = [
   {
-    title: 'Video Editing',
-    description: 'Professional video editing with stunning visuals and motion graphics',
-    icon: Play,
+    title: 'Search Engine Optimization (SEO)',
+    description: 'Dominate search rankings and drive consistent organic traffic and growth',
+    icon: Search,
     color: 'from-purple-500 to-pink-500',
-    href: '/services/video-editing'
+    href: '/services/seo'
   },
   {
     title: 'Website Creation',
-    description: 'Lightning-fast websites delivered in just 6 hours',
+    description: 'Lightning-fast websites delivered in just 12 hours',
     icon: Globe,
     color: 'from-blue-500 to-cyan-500',
     href: '/services/website-creation'

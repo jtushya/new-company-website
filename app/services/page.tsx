@@ -20,20 +20,12 @@ import Link from 'next/link';
 
 const services = [
   {
-    title: 'Video Editing',
-    description: 'Professional video editing with stunning visuals, motion graphics, and cinematic storytelling that captivates your audience.',
-    icon: Play,
-    color: 'from-purple-500 to-pink-500',
-    href: '/services/video-editing',
-    features: ['Motion Graphics', 'Color Grading', 'Audio Enhancement', 'Social Media Formats']
-  },
-  {
     title: 'Website Creation',
-    description: 'Lightning-fast websites delivered in just 6 hours with modern design, responsive layouts, and optimized performance.',
+    description: 'Lightning-fast websites delivered in just 12 hours with modern design, responsive layouts, and optimized performance.',
     icon: Globe,
     color: 'from-blue-500 to-cyan-500',
     href: '/services/website-creation',
-    features: ['6-Hour Delivery', 'Responsive Design', 'SEO Optimized', 'Modern UI/UX']
+    features: ['12-Hour Delivery', 'Responsive Design', 'SEO Optimized', 'Modern UI/UX']
   },
   {
     title: 'Digital Transformation',
@@ -44,14 +36,6 @@ const services = [
     features: ['Process Automation', 'Cloud Migration', 'Digital Strategy', 'Technology Integration']
   },
   {
-    title: 'Social Media Management',
-    description: 'Strategic social media campaigns that build communities, increase engagement, and drive meaningful conversions.',
-    icon: Users,
-    color: 'from-pink-500 to-rose-500',
-    href: '/services/social-media-management',
-    features: ['Content Strategy', 'Community Management', 'Analytics & Reporting', 'Influencer Outreach']
-  },
-  {
     title: 'Digital Marketing',
     description: 'Data-driven marketing campaigns across all digital channels that convert visitors into loyal customers.',
     icon: TrendingUp,
@@ -60,12 +44,12 @@ const services = [
     features: ['PPC Campaigns', 'Email Marketing', 'Conversion Optimization', 'Marketing Automation']
   },
   {
-    title: 'SEO & Google Ads',
-    description: 'Dominate search results with strategic SEO and targeted Google Ads that drive qualified traffic and sales.',
+    title: 'SEO (Search Engine Optimization)',
+    description: 'Dominate search results with strategic SEO that drives continuous organic traffic and long-term business growth.',
     icon: Search,
     color: 'from-indigo-500 to-purple-500',
-    href: '/services/seo-google-ads',
-    features: ['Keyword Research', 'On-Page SEO', 'Google Ads Management', 'Performance Tracking']
+    href: '/services/seo',
+    features: ['Keyword Research', 'On-Page SEO', 'Technical SEO Audit', 'Performance Tracking']
   },
   {
     title: 'Mobile App Development',

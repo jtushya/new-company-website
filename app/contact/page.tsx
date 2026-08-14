@@ -297,8 +297,8 @@ export default function Contact() {
                         >
                           <option value="">Select a service</option>
                           <option value="website-creation">Website Creation</option>
-                          <option value="video-editing">Video Editing</option>
                           <option value="digital-marketing">Digital Marketing</option>
+                          <option value="seo">SEO (Search Engine Optimization)</option>
                           <option value="mobile-app">Mobile App Development</option>
                           <option value="digital-transformation">Digital Transformation</option>
                           <option value="other">Other</option>
@@ -490,7 +490,7 @@ export default function Contact() {
             {[
               {
                 question: "How quickly can you deliver a website?",
-                answer: "Our signature service delivers professional websites in just 6 hours. For more complex projects, we provide realistic timelines during our initial consultation."
+                answer: "Our signature service delivers professional websites in just 12 hours. For more complex projects, we provide realistic timelines during our initial consultation."
               },
               {
                 question: "What's included in your website packages?",

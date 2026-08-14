@@ -14,12 +14,10 @@ import {
 } from 'lucide-react';
 
 const services = [
-  'Video Editing',
   'Website Creation',
   'Digital Transformation',
-  'Social Media Management',
   'Digital Marketing',
-  'SEO & Google Ads',
+  'SEO',
   'Mobile App Development',
   'Custom Software Development',
 ];

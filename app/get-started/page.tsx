@@ -28,11 +28,9 @@ import { toast } from 'sonner';
 
 const services = [
   { value: 'website-creation', label: 'Website Creation', icon: Globe },
-  { value: 'video-editing', label: 'Video Editing', icon: Palette },
   { value: 'digital-marketing', label: 'Digital Marketing', icon: TrendingUp },
+  { value: 'seo', label: 'SEO (Search Engine Optimization)', icon: TrendingUp },
   { value: 'mobile-app', label: 'Mobile App Development', icon: Smartphone },
-  { value: 'social-media', label: 'Social Media Management', icon: MessageSquare },
-  { value: 'seo-ads', label: 'SEO & Google Ads', icon: TrendingUp },
   { value: 'digital-transformation', label: 'Digital Transformation', icon: Zap },
   { value: 'custom-software', label: 'Custom Software Development', icon: Building },
 ];
@@ -70,7 +68,7 @@ const contactInfo = [
 const benefits = [
   'Free consultation and project assessment',
   'Custom solution tailored to your needs',
-  'Lightning-fast delivery in just 6 hours',
+  'Lightning-fast delivery in just 12 hours',
   'Dedicated project manager assigned',
   '24/7 support and maintenance',
   '100% satisfaction guarantee'
@@ -157,7 +155,7 @@ export default function GetStarted() {
               </div>
               <div className="flex items-center">
                 <div className="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center mr-3 text-sm font-bold">3</div>
-                <span>Start your project and deliver results in just 6 hours</span>
+                <span>Start your project and deliver results in just 12 hours</span>
               </div>
             </div>
           </div>
@@ -204,7 +202,7 @@ export default function GetStarted() {
             </div>
             <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-4xl mx-auto">
               Ready to transform your digital presence? Let's discuss your project and 
-              deliver exceptional results in just 6 hours.
+              deliver exceptional results in just 12 hours.
             </p>
             <div className="flex flex-wrap justify-center gap-4 text-sm">
               <div className="flex items-center bg-white/10 rounded-full px-4 py-2">
@@ -213,7 +211,7 @@ export default function GetStarted() {
               </div>
               <div className="flex items-center bg-white/10 rounded-full px-4 py-2">
                 <CheckCircle className="w-4 h-4 mr-2 text-green-400" />
-                6-Hour Delivery
+                12-Hour Delivery
               </div>
               <div className="flex items-center bg-white/10 rounded-full px-4 py-2">
                 <CheckCircle className="w-4 h-4 mr-2 text-green-400" />
@@ -343,7 +341,7 @@ export default function GetStarted() {
                             <SelectValue placeholder="When do you need this?" />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="asap">ASAP (6 hours)</SelectItem>
+                            <SelectItem value="asap">ASAP (12 hours)</SelectItem>
                             <SelectItem value="this-week">This week</SelectItem>
                             <SelectItem value="this-month">This month</SelectItem>
                             <SelectItem value="flexible">I'm flexible</SelectItem>
@@ -453,7 +451,7 @@ export default function GetStarted() {
                       <div className="text-purple-100">Projects Completed</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-3xl font-bold mb-2">6hrs</div>
+                      <div className="text-3xl font-bold mb-2">12hrs</div>
                       <div className="text-purple-100">Average Delivery</div>
                     </div>
                     <div className="text-center">

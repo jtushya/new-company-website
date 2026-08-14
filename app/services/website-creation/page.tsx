@@ -31,7 +31,7 @@ const features = [
   {
     icon: Zap,
     title: 'Lightning Fast',
-    description: 'Websites delivered in just 6 hours without compromising quality',
+    description: 'Websites delivered in just 12 hours without compromising quality',
     color: 'from-yellow-500 to-orange-500'
   },
   {
@@ -132,7 +132,7 @@ const testimonials = [
   {
     name: "Priya Sharma",
     role: "Boutique Owner",
-    content: "Planckk transformed our boutique website in just 6 hours. Our customers love the new mobile shopping experience!",
+    content: "Planckk transformed our boutique website in just 12 hours. Our customers love the new mobile shopping experience!",
     rating: 5,
     avatar: "https://ui-avatars.com/api/?name=Priya+Sharma&background=random&size=150"
   },
@@ -153,7 +153,7 @@ const testimonials = [
 ];
 
 const stats = [
-  { number: '6hrs', label: 'Average Delivery', icon: Clock },
+  { number: '12hrs', label: 'Average Delivery', icon: Clock },
   { number: '500+', label: 'Websites Built', icon: Globe },
   { number: '99%', label: 'Client Satisfaction', icon: Star },
 ];
@@ -235,7 +235,7 @@ export default function WebsiteCreation() {
               </div>
               
               <p className="text-lg text-gray-300 mb-8 leading-relaxed">
-                Get a stunning, professional website delivered in just 6 hours. Our expert team 
+                Get a stunning, professional website delivered in just 12 hours. Our expert team 
                 creates custom, responsive websites that convert visitors into customers and 
                 perfectly represent your brand online.
               </p>
@@ -262,7 +262,7 @@ export default function WebsiteCreation() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="flex items-center">
                   <CheckCircle className="w-5 h-5 text-green-400 mr-2" />
-                  <span className="text-sm">6-Hour Delivery</span>
+                  <span className="text-sm">12-Hour Delivery</span>
                 </div>
                 <div className="flex items-center">
                   <CheckCircle className="w-5 h-5 text-green-400 mr-2" />
@@ -348,7 +348,7 @@ export default function WebsiteCreation() {
       {/* Process Section */}
       <ServiceProcess
         title="Our Website Creation Process"
-        subtitle="From concept to launch in just 6 hours with our streamlined development process."
+        subtitle="From concept to launch in just 12 hours with our streamlined development process."
         steps={process}
       />
 
@@ -369,7 +369,7 @@ export default function WebsiteCreation() {
       {/* CTA Section */}
       <ServiceCTA
         title="Ready to Launch Your Website?"
-        subtitle="Get a professional, mobile-responsive website delivered in just 6 hours. Start your project today and watch your online presence transform."
+        subtitle="Get a professional, mobile-responsive website delivered in just 12 hours. Start your project today and watch your online presence transform."
         primaryButtonText="Start Your Website"
         secondaryButtonText="Schedule Consultation"
       />

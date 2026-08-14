@@ -169,7 +169,7 @@ export default function HeroSection() {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.6 }}
             >
-              in Just 6 Hours
+              in Just 12 Hours
             </motion.span>
           </motion.h1>
           

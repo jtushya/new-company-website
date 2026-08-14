@@ -5,7 +5,7 @@ import { Clock, Users, Star, CheckCircle } from 'lucide-react';
 
 const stats = [
   { number: '500+', label: 'Happy Clients', icon: Users, color: 'from-blue-500 to-cyan-500' },
-  { number: '6hrs', label: 'Avg Delivery', icon: Clock, color: 'from-green-500 to-emerald-500' },
+  { number: '12hrs', label: 'Avg Delivery', icon: Clock, color: 'from-green-500 to-emerald-500' },
   { number: '99%', label: 'Satisfaction', icon: Star, color: 'from-yellow-500 to-orange-500' },
   { number: '24/7', label: 'Support', icon: CheckCircle, color: 'from-purple-500 to-pink-500' },
 ];

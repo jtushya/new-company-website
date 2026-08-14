@@ -14,7 +14,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 
-const categories = ['All', 'Websites', 'Mobile Apps', 'Video Editing', 'Digital Marketing', 'Branding'];
+const categories = ['All', 'Websites', 'Mobile Apps', 'Digital Marketing', 'Branding'];
 
 const projects = [
   {
@@ -24,7 +24,7 @@ const projects = [
     description: 'A complete website for EA Global with modern design and user experience.',
     image: '/images/portfolio/img1.png',
     tags: ['User-Friendly Interface', 'Mobile Responsive', 'Fast Loading'],
-    deliveryTime: '24 hours',
+    // deliveryTime: '24 hours',
     client: 'EA Global',
     link: 'englisharenaglobal.com'
   },
@@ -35,7 +35,7 @@ const projects = [
     description: 'A comprehensive counselling website for EduPowr with booking system.',
     image: '/images/portfolio/img2.png',
     tags: ['Online Booking', 'Secure Payments', 'Student Dashboard'],
-    deliveryTime: '18 hours',
+    // deliveryTime: '18 hours',
     client: 'EduPowr Counselling',
     link: 'counselling.englisharenaglobal.com'
   },
@@ -46,7 +46,7 @@ const projects = [
     description: 'A professional website showcasing LED lighting products and services.',
     image: '/images/portfolio/img5.png',
     tags: ['Product Catalog', 'Custom Quote Builder', 'Energy Savings Calculator'],
-    deliveryTime: '12 hours',
+    // deliveryTime: '12 hours',
     client: 'LED Lighting Company'
   },
   {
@@ -56,7 +56,7 @@ const projects = [
     description: 'An AI-powered chat bot for emotional well-being and mental health support.',
     image: '/images/portfolio/mental-homepage.png',
     tags: ['24/7 Support', 'Private Conversations', 'Crisis Resources'],
-    deliveryTime: '24 hours',
+    // deliveryTime: '24 hours',
     client: 'Mental Welness Industry',
     link: 'mental-welness.vercel.app'
   },
@@ -67,7 +67,7 @@ const projects = [
     description: 'Professional website for POSH compliance services and resources.',
     image: '/images/portfolio/Secura compliances website homepage.png',
     tags: ['Training Portal', 'Case Management', 'Policy Guidelines'],
-    deliveryTime: '10 hours',
+    // deliveryTime: '10 hours',
     client: 'Secura Compliances',
     link: 'secura-website.vercel.app'
   },
@@ -78,7 +78,7 @@ const projects = [
     description: 'Corporate website for IK Group with modern responsive design.',
     image: '/images/portfolio/Ik group website.png',
     tags: ['Responsive Design', 'Contact Forms', 'SEO Optimized'],
-    deliveryTime: '14 hours',
+    // deliveryTime: '14 hours',
     client: 'IK Group',
     link: 'ik-group-website.vercel.app'
   },
@@ -286,7 +286,7 @@ export default function Portfolio() {
                      <div className="space-y-2 text-sm text-gray-500">
                       {Object.entries(project).map(([key, value]) => {
                         // Skip standard fields that we don't want to display
-                        const skipFields = ['id', 'title', 'category', 'description', 'image', 'tags'];
+                        const skipFields = ['id', 'title', 'category', 'description', 'image', 'tags', 'deliveryTime'];
                         if (skipFields.includes(key)) return null;
                         
                         // Format the key for display (capitalize first letter, add spaces before caps)
@@ -299,9 +299,10 @@ export default function Portfolio() {
 
                         // Handle different types of values
                         const displayValue = 
-                          key === 'deliveryTime' ? (
-                            <span className="font-medium text-green-600">{value}</span>
-                          ) : key === 'link' ? (
+                          // key === 'deliveryTime' ? (
+                          //   <span className="font-medium text-green-600">{value}</span>
+                          // ) : 
+                          key === 'link' ? (
                             <a href={`https://${value}`} target="_blank" rel="noopener noreferrer" className="font-medium text-purple-600 hover:text-purple-800">
                               {value}
                             </a>

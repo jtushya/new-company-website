@@ -5,18 +5,18 @@ export async function GET() {
     {
       slug: 'website-creation',
       title: 'Lightning-Fast Website Development',
-      description: 'Professional websites delivered in 6 hours',
+      description: 'Professional websites delivered in 12 hours',
       priority: '0.9'
     },
     {
-      slug: 'video-editing',
-      title: 'Professional Video Editing Services',
-      description: 'Expert video editing and motion graphics',
+      slug: 'seo',
+      title: 'Search Engine Optimization (SEO)',
+      description: 'Strategic search engine optimization services',
       priority: '0.8'
     },
     {
       slug: 'digital-marketing',
-      title: 'Digital Marketing & SEO Services',
+      title: 'Digital Marketing & Growth Services',
       description: 'Comprehensive digital marketing solutions',
       priority: '0.8'
     },
@@ -24,18 +24,6 @@ export async function GET() {
       slug: 'mobile-app-development',
       title: 'Mobile App Development',
       description: 'Native and cross-platform mobile apps',
-      priority: '0.8'
-    },
-    {
-      slug: 'social-media-management',
-      title: 'Social Media Management',
-      description: 'Professional social media marketing',
-      priority: '0.7'
-    },
-    {
-      slug: 'seo-google-ads',
-      title: 'SEO & Google Ads Services',
-      description: 'Search engine optimization and paid advertising',
       priority: '0.8'
     },
     {

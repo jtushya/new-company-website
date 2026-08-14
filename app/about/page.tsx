@@ -78,7 +78,7 @@ const team = [
 const stats = [
   { number: '500+', label: 'Projects Completed', icon: CheckCircle },
   { number: '98%', label: 'Client Satisfaction', icon: Star },
-  { number: '6hrs', label: 'Average Delivery', icon: Clock },
+  { number: '12hrs', label: 'Average Delivery', icon: Clock },
   { number: '50+', label: 'Team Members', icon: Users },
 ];
 
@@ -301,7 +301,7 @@ export default function About() {
                     </div>
                     <div>
                       <h4 className="font-semibold mb-2">Lightning Fast Delivery</h4>
-                      <p className="text-gray-300 text-sm">Get your website in just 6 hours, not 6 weeks.</p>
+                      <p className="text-gray-300 text-sm">Get your website in just 12 hours, not 6 weeks.</p>
                     </div>
                   </div>
                   <div className="flex items-start">

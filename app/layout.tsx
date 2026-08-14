@@ -22,27 +22,24 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://planckk.com'),
   title: {
-    default: 'Planckk - Lightning-Fast Digital Transformation | 6-Hour Website Delivery',
+    default: 'Planckk - Lightning-Fast Digital Transformation | 12-Hour Website Delivery',
     template: '%s | Planckk - Digital Innovation Experts'
   },
-  description: 'Transform your business with Planckk\'s lightning-fast digital services. Get professional websites in 6 hours, expert video editing, AI-powered marketing, and complete digital transformation solutions. 500+ satisfied clients, 99% satisfaction rate.',
+  description: 'Transform your business with Planckk\'s lightning-fast digital services. Get professional websites in 12 hours, SEO optimization, AI-powered marketing, and complete digital transformation solutions. 500+ satisfied clients, 99% satisfaction rate.',
   keywords: [
     // Primary keywords
     'digital transformation services',
-    'website development 6 hours',
+    'website development 12 hours',
     'fast website creation',
     'professional web design',
-    'video editing services',
+    'SEO optimization services',
     'digital marketing agency',
     'mobile app development',
-    'SEO optimization services',
-    'social media management',
     'custom software development',
     
     // Long-tail keywords
     'lightning fast website delivery',
     'same day website development',
-    'professional video editing company',
     'digital transformation consultant',
     'startup website development',
     'business digitization services',
@@ -130,8 +127,8 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://planckk.com',
     siteName: 'Planckk - Digital Transformation Experts',
-    title: 'Planckk - Lightning-Fast Digital Transformation | 6-Hour Website Delivery',
-    description: 'Transform your business with Planckk\'s lightning-fast digital services. Professional websites in 6 hours, expert video editing, AI-powered marketing. 500+ satisfied clients worldwide.',
+    title: 'Planckk - Lightning-Fast Digital Transformation | 12-Hour Website Delivery',
+    description: 'Transform your business with Planckk\'s lightning-fast digital services. Professional websites in 12 hours, SEO optimization, AI-powered marketing. 500+ satisfied clients worldwide.',
     images: [
       {
         url: '/OpenGraph images/og-3.png',
@@ -144,14 +141,14 @@ export const metadata: Metadata = {
         url: '/OpenGraph images/og-1.png',
         width: 1200,
         height: 630,
-        alt: 'Professional Web Development in 6 Hours',
+        alt: 'Professional Web Development in 12 Hours',
         type: 'image/png'
       },
       {
         url: '/OpenGraph images/og-2.png',
         width: 1200,
         height: 630,
-        alt: 'Digital Marketing & Video Editing Services',
+        alt: 'Digital Marketing & SEO Services',
         type: 'image/png'
       }
     ],
@@ -160,8 +157,8 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     site: '@planckk',
     creator: '@planckk',
-    title: 'Planckk - Lightning-Fast Digital Transformation | 6-Hour Website Delivery',
-    description: 'Transform your business with professional websites in 6 hours, expert video editing, and AI-powered marketing solutions. Join 500+ satisfied clients.',
+    title: 'Planckk - Lightning-Fast Digital Transformation | 12-Hour Website Delivery',
+    description: 'Transform your business with professional websites in 12 hours, SEO optimization, and AI-powered marketing solutions. Join 500+ satisfied clients.',
     images: ['/OpenGraph images/og-3.png'],
   },
   alternates: {
@@ -238,9 +235,9 @@ export default function RootLayout({
         <meta name="audience" content="all" />
         <meta name="subject" content="Digital Transformation Services" />
         <meta name="copyright" content="Planckk Digital Services" />
-        <meta name="abstract" content="Professional digital transformation services including lightning-fast website development, video editing, and marketing solutions." />
-        <meta name="topic" content="Digital Services, Web Development, Video Editing, Digital Marketing" />
-        <meta name="summary" content="Planckk delivers professional digital transformation services with lightning-fast turnaround times. Specializing in 6-hour website delivery, expert video editing, and comprehensive digital marketing solutions." />
+        <meta name="abstract" content="Professional digital transformation services including lightning-fast website development, SEO, and marketing solutions." />
+        <meta name="topic" content="Digital Services, Web Development, SEO, Digital Marketing" />
+        <meta name="summary" content="Planckk delivers professional digital transformation services with lightning-fast turnaround times. Specializing in 12-hour website delivery, SEO optimization, and comprehensive digital marketing solutions." />
         <meta name="Classification" content="Business" />
         <meta name="designer" content="Planckk Design Team" />
         <meta name="reply-to" content="info@planckk.com" />
@@ -274,7 +271,7 @@ export default function RootLayout({
                     "width": 512,
                     "height": 512
                   },
-                  "description": "Professional digital transformation services with lightning-fast delivery. Specializing in 6-hour website development, video editing, and comprehensive digital marketing solutions.",
+                  "description": "Professional digital transformation services with lightning-fast delivery. Specializing in 12-hour website development, SEO optimization, and comprehensive digital marketing solutions.",
                   "foundingDate": "2023",
                   "founders": [
                     {
@@ -329,15 +326,15 @@ export default function RootLayout({
                         "itemOffered": {
                           "@type": "Service",
                           "name": "Website Development",
-                          "description": "Professional website creation delivered in 6 hours"
+                          "description": "Professional website creation delivered in 12 hours"
                         }
                       },
                       {
                         "@type": "Offer",
                         "itemOffered": {
                           "@type": "Service",
-                          "name": "Video Editing",
-                          "description": "Professional video editing and motion graphics services"
+                          "name": "SEO Optimization",
+                          "description": "Comprehensive search engine optimization services"
                         }
                       },
                       {
@@ -345,7 +342,7 @@ export default function RootLayout({
                         "itemOffered": {
                           "@type": "Service",
                           "name": "Digital Marketing",
-                          "description": "Comprehensive digital marketing and SEO services"
+                          "description": "Comprehensive digital marketing and growth services"
                         }
                       }
                     ]
@@ -353,10 +350,8 @@ export default function RootLayout({
                   "knowsAbout": [
                     "Web Development",
                     "Digital Marketing",
-                    "Video Editing",
-                    "Mobile App Development",
                     "SEO Optimization",
-                    "Social Media Management",
+                    "Mobile App Development",
                     "Digital Transformation",
                     "UI/UX Design",
                     "E-commerce Development",
@@ -451,7 +446,7 @@ export default function RootLayout({
                         "itemOffered": {
                           "@type": "Service",
                           "name": "Lightning-Fast Website Development",
-                          "description": "Professional websites delivered in just 6 hours with modern design and functionality"
+                          "description": "Professional websites delivered in just 12 hours with modern design and functionality"
                         },
                         "priceSpecification": {
                           "@type": "PriceSpecification",

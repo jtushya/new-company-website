@@ -33,28 +33,10 @@ const benefits = [
     color: 'from-blue-500 to-cyan-500'
   },
   {
-    icon: Heart,
-    title: 'Health & Wellness',
-    description: 'Comprehensive health insurance and wellness programs',
-    color: 'from-pink-500 to-red-500'
-  },
-  {
-    icon: Coffee,
-    title: 'Learning Budget',
-    description: '₹25,000 annual budget for courses, conferences, and skill development',
-    color: 'from-purple-500 to-indigo-500'
-  },
-  {
     icon: Users,
     title: 'Collaborative Team',
     description: 'Work with talented, passionate people who love what they do',
     color: 'from-green-500 to-teal-500'
-  },
-  {
-    icon: Calendar,
-    title: 'Unlimited PTO',
-    description: 'Take time off when you need it with our flexible vacation policy',
-    color: 'from-indigo-500 to-purple-500'
   },
 ];
 

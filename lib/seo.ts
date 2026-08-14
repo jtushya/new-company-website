@@ -28,7 +28,7 @@ export function generateSEO({
   tags = []
 }: SEOProps): Metadata {
   const baseTitle = 'Planckk - Lightning-Fast Digital Transformation';
-  const baseDescription = 'Transform your business with Planckk\'s lightning-fast digital services. Professional websites in 6 hours, expert video editing, AI-powered marketing solutions.';
+  const baseDescription = 'Transform your business with Planckk\'s lightning-fast digital services. Professional websites in 12 hours, SEO optimization, and AI-powered marketing solutions.';
   
   const seoTitle = title ? `${title} | ${baseTitle}` : baseTitle;
   const seoDescription = description || baseDescription;
@@ -39,10 +39,9 @@ export function generateSEO({
     'digital transformation services',
     'lightning fast website development',
     'professional web design',
-    'video editing services',
+    'SEO optimization',
     'digital marketing agency',
     'mobile app development',
-    'SEO optimization',
     'business digitization',
     'startup services',
     'modern web technologies',
@@ -129,10 +128,10 @@ export function generateSEO({
 // Service-specific SEO configurations
 export const servicesSEO = {
   'website-creation': {
-    title: 'Lightning-Fast Website Development | 6-Hour Delivery',
-    description: 'Get professional websites delivered in just 6 hours. Modern design, responsive layout, SEO optimization, and CMS integration. 500+ successful projects.',
+    title: 'Lightning-Fast Website Development | 12-Hour Delivery',
+    description: 'Get professional websites delivered in just 12 hours. Modern design, responsive layout, SEO optimization, and CMS integration. 500+ successful projects.',
     keywords: [
-      'website development 6 hours',
+      'website development 12 hours',
       'fast website creation',
       'lightning fast web design',
       'same day website delivery',
@@ -149,25 +148,19 @@ export const servicesSEO = {
       'conversion-focused design'
     ]
   },
-  'video-editing': {
-    title: 'Professional Video Editing Services | Motion Graphics & Post-Production',
-    description: 'Expert video editing services with motion graphics, color grading, and professional post-production. Transform your content with cinematic quality.',
+  'seo': {
+    title: 'Search Engine Optimization (SEO) Services | Rank #1 on Google',
+    description: 'Data-driven search engine optimization services to boost your organic rankings, increase search visibility, and drive qualified organic leads.',
     keywords: [
-      'professional video editing',
-      'motion graphics design',
-      'video post-production',
-      'cinematic video editing',
-      'corporate video production',
-      'social media video editing',
-      'promotional video creation',
-      'video content marketing',
-      'animation services',
-      'video storytelling',
-      'brand video production',
-      'commercial video editing',
-      'YouTube video editing',
-      'video optimization',
-      'visual effects services'
+      'SEO optimization services',
+      'search engine marketing',
+      'technical SEO audit',
+      'on-page SEO optimization',
+      'keyword research services',
+      'local SEO services',
+      'organic traffic growth',
+      'search ranking improvement',
+      'SEO consulting'
     ]
   },
   'digital-marketing': {
